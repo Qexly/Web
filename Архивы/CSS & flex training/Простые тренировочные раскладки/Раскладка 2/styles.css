@@ -1,0 +1,38 @@
+.top{
+    background: #000;
+    width: 100%;
+    max-width: 960px;
+    min-width: 460px; /*Если экран меньше 960 и больше 460 - то ширина блока по ширине экрана, иначе блок не шире 960 и не уже 460*/
+
+    min-height: 100px; /*даже если нет контента - высота не менее 100px*/
+    margin: 0 auto 40px;
+}
+
+.grid{
+    width: 100%;
+    max-width: 960px;
+    min-width: 460px; /*Если экран меньше 960 и больше 460 - то ширина блока по ширине экрана, иначе блок не шире 960 и не уже 460*/
+
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
+.grid-item{
+    background: black;
+    min-height: 200px;
+    font-size: 40px;
+    color: wheat;
+    margin: 0 10px 20px;
+    flex: 1 1 calc(33.33% - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item:nth-of-type(3) ~ .grid-item{
+    margin-bottom: 0;
+}

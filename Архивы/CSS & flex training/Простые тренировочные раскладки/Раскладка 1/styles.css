@@ -1,0 +1,51 @@
+body{
+    border: 3px dotted pink;
+}
+.container{
+    width: 100%; /*Если экран очень большой,*/
+    max-width: 960px; /*то не растягивать на всю ширину, а максимум на 960px, а если меньше 960, то можно на весь (width: 100%) */
+
+    margin: 0 auto; /*Горизонтальное выравнивание*/
+    display: flex;
+    flex-wrap: wrap;
+
+    border: 1px solid black; /*Визуализация*/
+    padding: 1px;
+}
+
+.block-first{
+    background: #000;
+    min-height: 430px;
+    font-size: 40px;
+    color: white;
+    flex: auto; /*grow: 1; shrink: 1; basis: auto;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-right{
+    margin-left:30px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 220px; /*grow: 0; shrink: 0; basis: 220;*/
+
+    border: 1px solid lightgreen; /*Визуализация*/
+}
+
+.block-item{
+    background: black;
+    min-height: 200px;
+    font-weight: 40px;
+    color: white;
+    flex: auto; /*grow: 1; shrink: 1; basis: auto;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.block-item:last-child{
+    margin-bottom: 0px;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .circle {
+          transition-property: width, height, margin-left, margin-top;
+          transition-duration: 2s;
+          position: fixed;
+          transform: translateX(-50%) translateY(-50%);
+          background-color: red;
+          border-radius: 50%;
+        }
+      </style>
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showCircle(150, 150, 100, div => {
+        div.classList.add('message-ball');
+        div.append('Hello, world!');
+      })">showCircle(150, 150, 100)</button>
+    <script src="script.js"></script> 
+</body>
+</html>
+    

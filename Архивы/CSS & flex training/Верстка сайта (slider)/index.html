@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header__section">
+            <div class="header__item header-logo">
+                S3GIN
+            </div>
+            <div class="header__item headerButton">
+                <a href="#">News</a>
+            </div>
+            <div class="header__item headerButton">
+                <a href="#">Events</a>
+            </div>
+            <div class="header__item headerButton">
+                <a href="#">Lifehacks</a>
+            </div>
+            <div class="header__item headerButton">
+                <a href="#">Technologies</a>
+            </div>
+            <div class="header__item headerButton">
+                <a href="#">Business</a>
+            </div>
+        </div>
+
+        <div class="header__section">
+            <div class="header__item headerButton">
+                <a href="#">Settings</a>
+            </div>
+            <div class="header__item headerButton">
+                <a href="#">Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="sideBar">
+            <div class="sideBar_Section">
+                <div class="sideBar_Item">
+                    <a href="#">My page</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Friends</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Answers</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Communities</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Photo</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Music</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Games</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Tabs</a>
+                </div>
+            </div>
+            <div class="sideBar_Section">
+                <div class="sideBar_Item">
+                    <a href="#">Birthdays</a>
+                </div>
+                <div class="sideBar_Item">
+                    <a href="#">Notifications</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <h1>Photo slider</h1>
+            <div class="slider">
+                <button onclick="prev()">&laquo;</button>
+                <div class="scroller">
+                    <ul class="items">
+                        <li class="item" style="background-image: url(https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700248059.jpg)"></li>
+                        <li class="item" style="background-image: url(https://i.ytimg.com/vi/BIurv0NCvio/maxresdefault.jpg)"></li>
+                        <li class="item" style="background-image: url(http://hd-wallpapersfd.info/wp-content/uploads/HTML/Nissan-GTR-Liberty-Walk/Nissan-GTR-Liberty-Walk45.jpg)"></li>
+                    </ul>
+                </div>
+                <button onclick="next()">&raquo;</button>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

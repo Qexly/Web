@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    border: 1px solid lightslategray;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #689CD2;
+    color: lightyellow;
+    font-family: Helvetica;
+}
+
+.header__section {
+    border: 1px solid rgb(42, 247, 213);
+    display: flex;
+    align-items: center;
+}
+
+.header__item{
+    border: 1px solid  rgb(245, 77, 169);
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+.header__item:hover {
+    background-color: rgba(59, 255, 245, 0.562);
+    border-radius: 4px;
+}
+
+.header-logo {
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.header-logo:hover{
+    cursor: default;
+}
+
+.headerButton:hover{
+    cursor: pointer;
+}
+
+main{
+    border: 1px solid black;
+}
+
+.sideBar{
+    border: 1px solid rgb(230, 77, 77);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 630px;
+    width: 150px;
+    border-right: 1px solid #d7dbdd;
+    background-color: #fcfdfd;
+    padding: 10px;
+}
+
+.sideBar a{
+    color:#689CD2;
+}
+
+.sideBar_Section{
+    border: 1px solid rgb(122, 236, 122);
+}
+
+.sideBar_Item{
+    cursor: pointer;
+    padding: 8px 10px;
+    font-size: 18px;
+}
+
+.sideBar_Item:hover{
+    background-color: rgba(59, 255, 245, 0.562);
+    border-radius: 4px;
+}
+
+/*slider*/
+
+main{
+    display: flex;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background: #333;
+    height: 2000px;
+}
+
+.wrap{
+    border: 1px solid white;
+}
+
+h1{
+    text-align: center;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.wrap{
+    display: flex;
+    align-items: stretch;
+    width: 90%;
+    flex-direction: column;
+    margin: auto;
+}
+
+button{
+    width: 30px;
+    border: none;
+    background: transparent; /*Прозрачный*/
+    color: white;
+    font-size: 40px;
+    opacity: 0.5; /*Прозрачность*/
+    transition: opacity 300ms ease-out; /**/
+}
+
+button:hover{
+    opacity: 1;
+}
+
+.slider{
+    border: 1px solid yellow;
+    display: flex;
+    flex-direction: row;
+}
+
+.scroller{
+    border: 1px solid green;
+    flex-grow: 1;
+    overflow: hidden; /*Свойство overflow управляет отображением содержания блочного элемента, если оно целиком не помещается и выходит за область заданных размеров.*/
+}
+
+.items{
+    list-style-type: none;
+    white-space: nowrap; /*Объединяет последовательности пробелов в один пробел, как значение normal, но не переносит строки (оборачивание текста) внутри текста.*/
+    font-size: 0;
+    transition: transform 1s ease-in-out;
+}
+
+.item{
+    padding: 30px 20px;
+    display: inline-block;
+    width: 100%;
+    height: 500px;
+    background-size: cover; /*По размеру блока*/
+    background-position: 50% 50%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+

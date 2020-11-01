@@ -1,0 +1,19 @@
+
+nav{
+    padding-left: 5px;
+    padding-top: 10px;
+}
+
+.item a {
+    text-decoration: none;
+    color: rgb(63, 61, 61);
+    font-size: 180%;
+}
+
+a.active {
+    color: rgb(119, 116, 116);
+}
+
+a:active {
+    color: indigo;
+}

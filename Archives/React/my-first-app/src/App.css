@@ -1,0 +1,59 @@
+/*Рамки конструкторские*/
+
+/*Структурные стили (каркас)*/
+* {
+    box-sizing: border-box;
+    font-family: verdana;
+}
+
+html {
+    background: #fff;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    margin: 0;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1170px;
+    min-width: 650px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+/*Содержание обертки*/
+
+main {
+    display: flex;
+    flex-grow: 1;
+}
+
+.app-wrapper-header {
+    background-color:rgba(200, 207, 206, 0.616);
+    margin-bottom: 20px;
+}
+
+.app-wrapper-sidebar {
+    background-color: rgba(200, 207, 206, 0.616);
+    width: 15%;
+    flex-shrink: 0;
+}
+
+.app-wrapper-content {
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(200, 207, 206, 0.616);
+    flex-grow: 1;
+    margin-left: 20px;
+}
+

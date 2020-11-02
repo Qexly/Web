@@ -16,10 +16,6 @@ function MyPosts (){
             <div className={s.MyPosts}>
                 <Post message='Hi, how are u?' likesCount='2' />
                 <Post message="Hi, it's my first post" likesCount='3'  />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
             </div>
 
         </div>

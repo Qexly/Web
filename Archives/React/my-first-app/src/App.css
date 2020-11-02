@@ -33,27 +33,26 @@ body {
 
 /*Содержание обертки*/
 
-main {
-    display: flex;
-    flex-grow: 1;
-}
-
 .app-wrapper-header {
     background-color:rgba(200, 207, 206, 0.616);
     margin-bottom: 20px;
 }
 
+main {
+    display: flex;
+    flex-grow: 1; /*align-items: stretch - по умолчанию, поэтому флекс-элементы вытянуты на всю высоту контейнера*/
+}
+
 .app-wrapper-sidebar {
     background-color: rgba(200, 207, 206, 0.616);
-    width: 15%;
-    flex-shrink: 0;
+    flex: 0 0 15%; /*Когда сжимаем экран, 15% всегда разное число, т.к. ширина контейнера меняется*/ 
+    min-width: 155px; /*Но если 15% от ширины контейнера менее 155px, то прекратить сжимать сайдбар*/
 }
 
 .app-wrapper-content {
-    display: flex;
-    flex-direction: column;
+    flex-grow: 1; /*Займи остальное место, не занятое сайдбаром*/
     background-color:rgba(200, 207, 206, 0.616);
-    flex-grow: 1;
     margin-left: 20px;
+
 }
 

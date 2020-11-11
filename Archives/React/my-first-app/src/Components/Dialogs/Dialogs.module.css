@@ -1,5 +1,5 @@
 /*Рамки--------*/
-.dialogs{
+.dialogsContainer {
     border: 1px solid black;
 
 }
@@ -12,7 +12,7 @@
 }
 /*----------*/
 
-.dialogs {
+.dialogsContainer {
     display: flex;
 }
 
@@ -22,19 +22,8 @@
     padding: 10px;
 }
 
-.dialog {
-
-}
-
-.dialog.active {
-    color: rgb(119, 116, 116);
-}
-
 .messages {
  flex-grow: 1;
  padding: 10px;
 }
 
-.message {
-
-}

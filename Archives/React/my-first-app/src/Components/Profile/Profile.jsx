@@ -1,19 +1,20 @@
-import car1 from './imgs/car1.png';
 import MyPosts from './MyPosts/MyPosts';
 import s from './Profile.module.css';
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-function Profile (){
+function Profile (props){
+
     return (
         <div>
-          <div>
-            <img src={car1} className={s.img1Content} />
-          </div>
-          
-          <div>
-            ava + description
-          </div>
 
-          <MyPosts />
+          <ProfileInfo />
+
+          <MyPosts 
+            posts={props.posts} 
+            addPost={props.addPost}
+            changeNewPostText={props.changeNewPostText} 
+            newPostText={props.newPostText}
+          />
 
         </div>
     );

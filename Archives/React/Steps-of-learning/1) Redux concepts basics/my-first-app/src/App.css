@@ -1,0 +1,59 @@
+/*Рамки конструкторские*/
+
+/*Структурные стили (каркас)*/
+* {
+    box-sizing: border-box;
+    font-family: verdana;
+    color: rgb(63, 61, 61);
+}
+
+html {
+    background: #fff;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    margin: 0;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1170px;
+    min-width: 650px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+/*Содержание обертки*/
+
+.app-wrapper-header {
+    background-color:rgba(200, 207, 206, 0.616);
+    margin-bottom: 20px;
+}
+
+main {
+    display: flex;
+    flex-grow: 1; /*align-items: stretch - по умолчанию, поэтому флекс-элементы вытянуты на всю высоту контейнера*/
+}
+
+.app-wrapper-sidebar {
+    background-color: rgba(200, 207, 206, 0.616);
+    flex: 0 0 15%; /*Когда сжимаем экран, 15% всегда разное число, т.к. ширина контейнера меняется*/ 
+    min-width: 155px; /*Но если 15% от ширины контейнера менее 155px, то прекратить сжимать сайдбар*/
+}
+
+.app-wrapper-content {
+    flex-grow: 1; /*Займи остальное место, не занятое сайдбаром*/
+    background-color:rgba(200, 207, 206, 0.616);
+    margin-left: 20px;
+
+}
+

@@ -1,0 +1,12 @@
+.dialog {
+
+}
+
+.dialog .active {
+    color: rgb(119, 116, 116);
+}
+
+.dialog a {
+    color: inherit;
+    text-decoration: none;
+}

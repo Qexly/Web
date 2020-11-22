@@ -1,0 +1,29 @@
+/*Рамки--------*/
+.dialogsContainer {
+    border: 1px solid black;
+
+}
+.dialogsItems {
+    border: 1px solid rgb(250, 3, 3);
+}
+
+.messages {
+    border: 1px solid rgb(3, 49, 255);
+}
+/*----------*/
+
+.dialogsContainer {
+    display: flex;
+}
+
+.dialogsItems {
+    width: 18%;
+    min-width: 100px;
+    padding: 10px;
+}
+
+.messages {
+ flex-grow: 1;
+ padding: 10px;
+}
+

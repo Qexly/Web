@@ -10,10 +10,11 @@ import Greeting from './Components/Greeting/Greeting.jsx';
 import LoginControl from './Components/LoginControl/LoginControl.jsx';
 import PlainList from './Components/PlainList/PlainList.jsx';
 import NameForm from './Components/NameForm/NameForm.jsx';
+import CalcTemp from './Components/CalcTemp/CalcTemp.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
-    <NameForm />
+    <CalcTemp />
   </React.StrictMode>,
   document.getElementById('root')
 );

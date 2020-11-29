@@ -1,6 +1,14 @@
 
-function profileReducer(state, action) {
-    if (action.type == 'ADD-POST') {  //state будет являться на самом деле лишь веткой profilePage целого стейта, т.к. он целиков в редьюсер не передется
+let initialState = {
+    postData: [
+        { id: 1, message: 'Hi, how are u?', likesCount: 2 },
+        { id: 2, message: 'Hi, it\'s my first post', likesCount: 3 },
+    ],
+    newPostText: '',
+};
+
+function profileReducer(state = initialState, action) {
+    if (action.type == 'ADD-POST') {  //state будет являться на самом деле лишь веткой profilePage целого стейта, т.к. он целиком в редьюсер не передется
         let newPost = {
             id: 3,
             message: state.newPostText,

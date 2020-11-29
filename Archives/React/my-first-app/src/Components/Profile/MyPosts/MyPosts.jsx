@@ -12,14 +12,14 @@ function MyPosts (props){
     });
 
     let newPostElement = React.createRef();
-
+ 
     function postChange() {
         let text = newPostElement.current.value;
-        props.dispatch(updateNewPostTextAC(text));
+        props.updateNewPostText(text);
     }
 
     function addPost() {
-        props.dispatch(addPostActionCreator());
+        props.addNewPost();
     }
 
     return (

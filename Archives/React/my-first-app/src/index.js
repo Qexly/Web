@@ -2,25 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import appStore from './Redux/state.js';
+import appStore from './Redux/redux-store.js';
 
 
 function rerendedEntiteTree(store) {
-    ReactDOM.render(
-      <React.StrictMode>
-        <App 
-        state={store.getState} 
-        dispatch={store.dispatch.bind(store)}
-        />
-      </React.StrictMode>,
-      document.getElementById('root')
-    );
-
+  ReactDOM.render(
+    <React.StrictMode>
+      <App
+        store={store}
+      />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
 }
 
 rerendedEntiteTree(appStore);
 
-appStore.subscribe(rerendedEntiteTree);
+appStore.subscribe(rerendedEntiteTree.bind(null, appStore));
 
 
 

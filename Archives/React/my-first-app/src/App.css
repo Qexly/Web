@@ -42,6 +42,7 @@ body {
 main {
     display: flex;
     flex-grow: 1; /*align-items: stretch - по умолчанию, поэтому флекс-элементы вытянуты на всю высоту контейнера*/
+    
 }
 
 .app-wrapper-sidebar {
@@ -54,6 +55,6 @@ main {
     flex-grow: 1; /*Займи остальное место, не занятое сайдбаром*/
     background-color:rgba(200, 207, 206, 0.616);
     margin-left: 20px;
-
+    max-width: calc(85% - 20px);  
 }
 

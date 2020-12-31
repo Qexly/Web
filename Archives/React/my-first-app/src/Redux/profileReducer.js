@@ -5,24 +5,35 @@ let initialState = {
         { id: 2, message: 'Hi, it\'s my first post', likesCount: 3 },
     ],
     newPostText: '',
+    profile: null, 
 };
 
 function profileReducer(state = initialState, action) {
-    if (action.type == 'ADD-POST') {  //state будет являться на самом деле лишь веткой profilePage целого стейта, т.к. он целиком в редьюсер не передется
-        let newPost = {
-            id: 3,
-            message: state.newPostText,
-            likesCount: 0,
-        };
-    
-        state.newPostText = '';
-        state.postData.push(newPost);
+
+    if (action.type == 'ADD-POST') { 
+        return {
+            ...state,
+            postData: [...state.postData, {id: 3, message: state.newPostText, likesCount: 0}],
+            newPostText: '',
+        }
     };
+
     if (action.type == 'UPDATE-NEW-POST-TEXT') {
-        state.newPostText = action.newText;
+        return {
+            ...state,
+            newPostText: action.newText,
+        }
+    };
+
+    if (action.type == 'SET_USER_PROFILE') {
+        return {
+            ...state,
+            profile: action.profile
+        }
     };
 
     return state;
+
 }
 
 export default profileReducer;
@@ -39,3 +50,7 @@ export function updateNewPostTextAC(text) {
         newText: text,
     }
 }
+
+export const onSetUserProfile = (profile) => ({type:'SET_USER_PROFILE', profile})
+
+//dispatch вызовет каждый редьюсер от (стейта, экшен)

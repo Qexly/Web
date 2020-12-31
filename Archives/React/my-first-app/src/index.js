@@ -3,22 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import appStore from './Redux/redux-store.js';
+import {Provider} from 'react-redux';
 
 
-function rerendedEntiteTree(store) {
-  ReactDOM.render(
+//в провайдере пропс, в котором передаем стор, должен называться именно store!
+ReactDOM.render(
+  <Provider store={appStore}>
     <React.StrictMode>
-      <App
-        store={store}
-      />
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-}
+      <App />
+    </React.StrictMode>
+  </Provider>
+  ,
+  document.getElementById('root')
+);
 
-rerendedEntiteTree(appStore);
 
-appStore.subscribe(rerendedEntiteTree.bind(null, appStore));
+
+
+
 
 
 

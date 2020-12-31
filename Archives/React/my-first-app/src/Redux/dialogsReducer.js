@@ -17,15 +17,20 @@ let initialState = {
 }
 
 export function dialogsReducer(state = initialState, action) {
+
     if (action.type == 'UPDATE-NEW-MESSAGE-BODY') {
-        state.newMessageBody = action.body;
+        return {
+            ...state,
+            newMessageBody: action.body,
+        }
     };
+
     if (action.type == 'SEND-MEASSAGE') {
-        state.messagesData.push({
-            id: 0, 
-            message: state.newMessageBody,
-        });
-        state.newMessageBody = '';
+        return {
+            ...state,
+            messagesData: [...state.messagesData, {id: 0, message: state.newMessageBody}],
+            newMessageBody: ''
+        }
     };
 
     return state;

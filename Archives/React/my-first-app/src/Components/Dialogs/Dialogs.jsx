@@ -5,15 +5,15 @@ import Message from './Message/Message.jsx';
 
 function Dialogs(props) {
 
-    let dialogsElements = props.state.dialogsPage.dialogsData.map((item, index, array) => {
+    let dialogsElements = props.dialogs.map((item, index, array) => {
         return <DialogItem name={item.name} id={item.id} />
     });
 
-    let messagesElements = props.state.dialogsPage.messagesData.map((item) => {
+    let messagesElements = props.messages.map((item) => {
         return <Message text={item.message} id={item.id} />
     });
 
-    let newMessageBody = props.state.dialogsPage.newMessageBody;
+    let newMessageBody = props.newMessageBody;
 
     function onNewMessageValueChange(e) {
         let text = e.target.value;

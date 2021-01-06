@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import Welcome from './Components_basic/Welcome/Welcome.jsx';
 import Clock from './Components_basic/Clock/Clock.jsx'; 
 import Button from './Components_basic/Button/Button.jsx';
 import Greeting from './Components_basic/Greeting/Greeting.jsx';
@@ -17,7 +18,8 @@ import OnClickWindowList from './Components_advanced/onClickWindowList/OnClickWi
 
 ReactDOM.render(
   <React.StrictMode>
-    <OnClickWindowList/>
+    <Welcome name='Илья'/>
+    <Welcome name='Мария'/>
   </React.StrictMode>,
   document.getElementById('root')
 );

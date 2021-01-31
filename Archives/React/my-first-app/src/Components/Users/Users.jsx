@@ -12,16 +12,15 @@ function Users(props) {
     }
 
     return (
-
         <div>
             {
                 pages.map((item) => {
                     if (item % 40 == 0) {
-                        return <span
+                        return <span key={item}
                             className={props.currentPage == item ? s.selectedPage : null}
                             onClick={props.onPageChangeHandler}>{item + ' '}<br /></span>
                     } else {
-                        return <span
+                        return <span key={item}
                             className={props.currentPage == item ? s.selectedPage : null}
                             onClick={props.onPageChangeHandler}>{item + ' '}</span>
                     }
@@ -32,7 +31,6 @@ function Users(props) {
             {
                 props.users.map((item) => {
                     return (
-
                         <div key={item.id}>
                             <span>
                                 <div>
@@ -42,30 +40,13 @@ function Users(props) {
                                 </div>
                                 <div>
                                     {
-                                        item.followed ? <button onClick={() => {
-                                            Axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, 
-                                            {withCredentials: true, 
-                                                headers: {
-                                                'API-KEY':'338c373f-4be2-4616-948e-177be0a39724',
-                                                },
-                                            })
-                                                .then((responce) => {
-                                                    if (responce.data.resultCode === 0) props.onFlipTheFollowToggle(item.id);
-                                                })
+                                        item.followed ? <button disabled={props.isFollowinProg.includes(item.id)} onClick={() => {
+                                            props.followTogglerThunkCreator(item.id, false)
                                         }}>Unfollow</button> :
-                                            <button onClick={() => {
-                                                Axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, 
-                                                {withCredentials: true,
-                                                    headers:{
-                                                        'API-KEY':'338c373f-4be2-4616-948e-177be0a39724',
-                                                        },
-                                                })
-                                                .then((responce) => {
-                                                    if (responce.data.resultCode === 0) props.onFlipTheFollowToggle(item.id);
-                                                })
+                                            <button disabled={props.isFollowinProg.includes(item.id)} onClick={() => {
+                                                props.followTogglerThunkCreator(item.id, true)
                                             }}>Follow</button>
                                     }
-
                                 </div>
                             </span>
                             <span>

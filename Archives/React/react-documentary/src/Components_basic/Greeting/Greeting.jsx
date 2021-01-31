@@ -1,26 +1,35 @@
-import React from 'react';
+import React from "react";
 
-function Greeting(props) {
+function UserGreeting() {
+    return (
+        <div>
+            <h1>С Возвращением!</h1>
+        </div>
+    )
+}
 
-    const isLogged = props.isLogginIn;
+function GuestGreeting() {
+    return (
+        <div>
+            <h1>Войдите, пожалуйста</h1>
+        </div>
+    )
+}
 
-    if (isLogged) {
-        return <UserGreeting />;
+class Greeting extends React.Component {
+    constructor(props) {
+        super(props);
     }
 
-    return <GuestGreeting />;
-}
-
-function UserGreeting(props) {
-    return (
-        <h1>Добро пожаловать</h1>
-    );
-}
-
-function GuestGreeting(props) {
-    return (
-        <h1>Необходимо войти</h1>
-    );
+    render() {
+        return (
+            <div>
+                {
+                    this.props.isLoggedIn ? <UserGreeting /> : <GuestGreeting />
+                }
+            </div>
+        )
+    }
 }
 
 export default Greeting;

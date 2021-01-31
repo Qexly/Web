@@ -1,33 +1,40 @@
 import React from 'react';
 
 class Clock extends React.Component {
-
     constructor(props) {
         super(props);
-        this.state = { date: new Date() };
+        this.state = {
+            date: new Date(),
+            counter: 0,
+        };
     }
 
     componentDidMount() {
-        this.timerID = setInterval(
+        this.timer = setInterval(
             () => this.tick(),
             1000
-        );
-    }
-
-    tick() {
-        this.setState({ date: new Date() });
+        )
     }
 
     componentWillUnmount() {
-        clearInterval(this.timerID);
+        clearTimeout(this.timer);
+    }
+
+    tick() {
+        this.setState((prevState, props) => {
+            return {
+                date: new Date(),
+            }
+        });
     }
 
     render() {
         return (
             <div>
-                <h3> {this.props.privet} Время: {this.state.date.toLocaleTimeString()}</h3>
+                <h1> Привет, мир! </h1>
+                <h2> Сейчас {this.state.date.toLocaleTimeString()} </h2>
             </div>
-        );
+        )
     }
 }
 

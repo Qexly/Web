@@ -13,22 +13,14 @@ let initialState = {
         { id: 2, message: 'Wazzup! All ok!' },
         { id: 3, message: 'Nice!' },
     ],
-    newMessageBody: '',
 }
 
 export function dialogsReducer(state = initialState, action) {
 
-    if (action.type == 'UPDATE-NEW-MESSAGE-BODY') {
-        return {
-            ...state,
-            newMessageBody: action.body,
-        }
-    };
-
     if (action.type == 'SEND-MEASSAGE') {
         return {
             ...state,
-            messagesData: [...state.messagesData, {id: 0, message: state.newMessageBody}],
+            messagesData: [...state.messagesData, {id: 0, message: action.message}],
             newMessageBody: ''
         }
     };
@@ -38,15 +30,9 @@ export function dialogsReducer(state = initialState, action) {
 
 export default dialogsReducer;
 
-export function sendMessageCreator() {
+export function sendMessageCreator(message) {
     return {
         type: 'SEND-MEASSAGE',
-    }
-}
-
-export function updateNewMessageBodyCreator(text) {
-    return {
-        type: 'UPDATE-NEW-MESSAGE-BODY',
-        body: text,
+        message,
     }
 }

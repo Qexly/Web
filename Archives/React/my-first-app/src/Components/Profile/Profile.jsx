@@ -1,4 +1,3 @@
-import MyPosts from './MyPosts/MyPosts';
 import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer.jsx';
@@ -7,7 +6,7 @@ function Profile (props){
 
     return (
         <div>
-          <ProfileInfo profile={props.profile} />
+          <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateUserStatus} />
           <MyPostsContainer />
         </div>
     );

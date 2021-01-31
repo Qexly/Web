@@ -39,12 +39,11 @@ let store = {
 
 
     subscribe(observer) {
-        this._callSubcriber = observer.bind(null ,this);
+        this._callSubcriber = observer.bind(null ,this); //rerendedEntiteTree(appStore);
     },
 
     //state changing:
     dispatch(action) {
-
         /*this._state.profilePage = */ profileReducer(this._state.profilePage, action);
         /*this._state.dialogsPage = */ dialogsReducer(this._state.dialogsPage, action);
         this._callSubcriber();

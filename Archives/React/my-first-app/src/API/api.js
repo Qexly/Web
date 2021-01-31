@@ -11,11 +11,32 @@ const instance = Axios.create({
 export const UsersApiDal = {
     getUsers(pageSize, currentPage) {
         return (
-            instance.get(`users?count=${pageSize}&page=${currentPage}`,
-                {withCredentials: true})
+            instance.get(`users?count=${pageSize}&page=${currentPage}`)
                 .then((responce) => responce.data)
         )
-    },  
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`);
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`);
+    },
 }
 
+export const profileApiDal = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`);
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status: status});
+    }
+}
 
+export const authApiDal = {
+    me() {
+        return instance.get(`auth/me`);
+    }
+}

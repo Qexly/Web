@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment} from 'react';
 import {connect} from 'react-redux';
-import {onFlipTheFollowToggle, onSetUsers, onSetPage, onSetTotalCount, onToggleFetching} from '../../Redux/usersReducer.js';
-import Axios from 'axios';
+import {followTogglerThunkCreator, onSetPage, getUsersThunkCreator} from '../../Redux/usersReducer.js';
 import Users from './Users';
 import Preloader from '../common/preloader/Preloader.jsx';
-import { UsersApiDal } from "./../../API/api.js";
+import { withAuthRedirect } from './../../HOCs/withAuthRedirect.jsx';
+import { compose } from 'redux'; 
 
 class UsersAPI extends React.Component { //делает запросы
 
@@ -13,25 +13,12 @@ class UsersAPI extends React.Component { //делает запросы
     }
 
     componentDidMount() {
-        if (!this.props.users.length) {
-            this.props.onToggleFetching(true);
-            UsersApiDal.getUsers(this.props.pageSize, this.props.currentPage)
-            .then(data => {
-               this.props.onSetUsers(data.items); 
-               this.props.onSetTotalCount(data.totalCount);
-               this.props.onToggleFetching(false);
-            }); 
-        }    
+        this.props.getUsersThunkCreator(this.props.pageSize, this.props.currentPage);
     }
 
     onPageChangeHandler = (e) => {
-        this.props.onToggleFetching(true);
-        this.props.onSetPage(+e.currentTarget.innerText);
-        UsersApiDal.getUsers(this.props.pageSize, +e.currentTarget.innerText)
-            .then(data => {
-               this.props.onSetUsers(data.items); //делать запрос ответственность этой компоненты
-               this.props.onToggleFetching(false);
-            }); 
+        this.props.onSetPage(+e.currentTarget.innerText); 
+        this.props.getUsersThunkCreator(this.props.pageSize, +e.currentTarget.innerText) 
     }
 
     render() {
@@ -42,9 +29,10 @@ class UsersAPI extends React.Component { //делает запросы
                     usersCount={this.props.usersCount} 
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
-                    onPageChangeHandler={this.onPageChangeHandler} 
-                    onFlipTheFollowToggle={this.props.onFlipTheFollowToggle}
                     users={this.props.users}
+                    isFollowinProg={this.props.isFollowinProg}
+                    onPageChangeHandler={this.onPageChangeHandler} 
+                    followTogglerThunkCreator={this.props.followTogglerThunkCreator}
                 />
            </Fragment>
             
@@ -60,9 +48,24 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         usersCount: 200,/*state.usersPage.totalUsersCount,*/
         isFetching: state.usersPage.isFetching,
+        isFollowinProg: state.usersPage.isFollowinProg,
     }
 }
 
-const UsersContainer = connect(mapStateToProps, {onFlipTheFollowToggle, onSetUsers, onSetPage, onSetTotalCount, onToggleFetching})(UsersAPI);
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {
+        followTogglerThunkCreator, 
+        onSetPage, 
+        getUsersThunkCreator,
+    })  
+)(UsersAPI)
+/*
+const UsersContainer = connect(mapStateToProps, {
+    followTogglerThunkCreator, 
+    onSetPage, 
+    getUsersThunkCreator,
+})(UsersAPI);
 
 export default UsersContainer;
+*/

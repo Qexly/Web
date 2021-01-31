@@ -1,3 +1,5 @@
+import {authApiDal} from './../API/api.js';
+
 let initialState = {
     id: null,
     email: null,
@@ -27,6 +29,17 @@ export const onSetAuthUserData = ({id, email, login}) => {
             email, 
             login,
         },
+    }
+}
+
+export const getAuthUserData = () => {
+    return (dispatch) => {
+        authApiDal.me().then(
+            (responce) => {
+              if (responce.data.resultCode === 0) {
+                dispatch(onSetAuthUserData(responce.data.data)); 
+              }
+            }); 
     }
 }
 

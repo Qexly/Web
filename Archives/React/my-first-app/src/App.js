@@ -1,11 +1,11 @@
 import './App.css';
 import Navbar from './Components/Navbar/Navbar.jsx';
-import Profile from './Components/Profile/Profile.jsx';
 import DialogsContainer from  './Components/Dialogs/DIalogsContainer.jsx';
 import { BrowserRouter, Route } from 'react-router-dom';
 import UsersContainer from './Components/Users/UsersContainer';
 import ProfileContainer from './Components/Profile/ProfileContainer.jsx';
 import HeaderContainer from './Components/Header/HeaderContainer';
+import LoginPage from "./Components/Login/Login.jsx";
 
 function App(props) {
  
@@ -30,12 +30,13 @@ function App(props) {
 
             <Route path='/users' render={ () => <UsersContainer />} />
 
+            <Route path='/login' render={ () => <LoginPage />} />
+
           </div>
         </main>
 
       </div>
     </BrowserRouter>
-    
   );
 }
 

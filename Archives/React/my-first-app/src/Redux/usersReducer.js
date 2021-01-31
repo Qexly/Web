@@ -1,3 +1,4 @@
+import { UsersApiDal } from './../API/api.js';
 
 let initialState = {
     users: [],
@@ -5,6 +6,7 @@ let initialState = {
     currentPage: 1,
     totalUsersCount: 100,
     isFetching: true,
+    isFollowinProg: [],
 }
 
 function usersReducer(state = initialState, action) {
@@ -28,10 +30,15 @@ function usersReducer(state = initialState, action) {
             return {...state, totalUsersCount: action.total};
         case ('TOGGLE_FETCHING') :
             return {...state, isFetching: action.isFetching};
+        case ('TOGGLE_FOLLOW_PROGRESS') : 
+            return {
+                ...state, 
+                isFollowinProg: action.isFollowOnProg ? [...state.isFollowinProg, action.userId] :
+                    state.isFollowinProg.filter((item) => item != action.userId),
+            }
         default:
             return state;
     }
-
 }
 
 
@@ -40,6 +47,38 @@ export const onSetUsers = (users) => ({type: 'SET_USERS', users}); //setUsersAC
 export const onSetPage = (currentPage) => ({type: 'SET_PAGE', currentPage}); //setPageAC
 export const onSetTotalCount = (total) => ({type: 'SET_TOTAL', total}); //setTotalCountAC
 export const onToggleFetching = (isFetching) => ({type: 'TOGGLE_FETCHING', isFetching}); //toggleFetchingAC
+export const onFollowButtonInProg = (isFollowOnProg, userId) => ({type: 'TOGGLE_FOLLOW_PROGRESS', isFollowOnProg, userId});
+
+export const getUsersThunkCreator = (pageSize, currentPage) => {
+    return (dispatch) => {
+        dispatch(onToggleFetching(true)); 
+        UsersApiDal.getUsers(pageSize, currentPage)
+            .then(data => {
+                dispatch(onSetUsers(data.items));
+                dispatch(onSetTotalCount(data.totalCount));
+                dispatch(onToggleFetching(false));
+            });
+    }
+}
+
+export const followTogglerThunkCreator = (userId, toFollow) => {
+    return (dispatch) => {
+        dispatch(onFollowButtonInProg(true, userId));
+        if (toFollow) {
+            UsersApiDal.follow(userId)
+            .then((responce) => {
+                if (responce.data.resultCode === 0) dispatch(onFlipTheFollowToggle(userId));
+                dispatch(onFollowButtonInProg(false, userId));
+            })
+        } else {
+            UsersApiDal.unfollow(userId)
+            .then((responce) => {
+                if (responce.data.resultCode === 0) dispatch(onFlipTheFollowToggle(userId));
+                dispatch(onFollowButtonInProg(false, userId));
+            })
+        }
+    }
+}
 
 export default usersReducer;
 

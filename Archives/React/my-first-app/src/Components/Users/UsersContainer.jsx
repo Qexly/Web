@@ -5,6 +5,7 @@ import Users from './Users';
 import Preloader from '../common/preloader/Preloader.jsx';
 import { withAuthRedirect } from './../../HOCs/withAuthRedirect.jsx';
 import { compose } from 'redux'; 
+import { superGetUsersSelector, getPageSize, getCurrentPage, getUsersCount, getIsFetching, getIsFollowinProg } from './../../Redux/users-selectors.js';
 
 class UsersAPI extends React.Component { //делает запросы
 
@@ -16,8 +17,7 @@ class UsersAPI extends React.Component { //делает запросы
         this.props.getUsersThunkCreator(this.props.pageSize, this.props.currentPage);
     }
 
-    onPageChangeHandler = (e) => {
-        this.props.onSetPage(+e.currentTarget.innerText); 
+    onPageChangeHandler = (e) => { 
         this.props.getUsersThunkCreator(this.props.pageSize, +e.currentTarget.innerText) 
     }
 
@@ -43,12 +43,12 @@ class UsersAPI extends React.Component { //делает запросы
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage,
-        usersCount: 200,/*state.usersPage.totalUsersCount,*/
-        isFetching: state.usersPage.isFetching,
-        isFollowinProg: state.usersPage.isFollowinProg,
+        users: superGetUsersSelector(state),
+        pageSize: getPageSize(state),
+        currentPage: getCurrentPage(state),
+        usersCount: getUsersCount(state),
+        isFetching: getIsFetching(state),
+        isFollowinProg: getIsFollowinProg(state),
     }
 }
 

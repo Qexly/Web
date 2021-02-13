@@ -3,7 +3,7 @@
 /*Структурные стили (каркас)*/
 * {
     box-sizing: border-box;
-    font-family: verdana;
+    font-family: "Open Sans", sans-serif;
     color: rgb(63, 61, 61);
 }
 
@@ -35,8 +35,9 @@ body {
 /*Содержание обертки*/
 
 .app-wrapper-header {
-    background-color:rgba(200, 207, 206, 0.616);
+    background-color:rgb(241, 238, 238);
     margin-bottom: 20px;
+    box-shadow: 0 0 15px -2px rgb(0 0 0 / 10%);
 }
 
 main {
@@ -46,15 +47,17 @@ main {
 }
 
 .app-wrapper-sidebar {
-    background-color: rgba(200, 207, 206, 0.616);
+    background-color:rgb(241, 238, 238);
     flex: 0 0 15%; /*Когда сжимаем экран, 15% всегда разное число, т.к. ширина контейнера меняется*/ 
     min-width: 155px; /*Но если 15% от ширины контейнера менее 155px, то прекратить сжимать сайдбар*/
+    box-shadow: 0 0 15px -2px rgb(0 0 0 / 10%);
 }
 
 .app-wrapper-content {
     flex-grow: 1; /*Займи остальное место, не занятое сайдбаром*/
-    background-color:rgba(200, 207, 206, 0.616);
+    background-color:rgb(241, 238, 238);
     margin-left: 20px;
     max-width: calc(85% - 20px);  
+    box-shadow: 0 0 15px -2px rgb(0 0 0 / 10%);
 }
 

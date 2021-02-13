@@ -25,7 +25,7 @@ class ProfileStatus extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.state.editMode) this.textInput.current.focus();
         if (prevProps.status !== this.props.status) {
-            this.setState((state, props) => ({value: this.props.status}));
+            this.setState((state, props) => ({value: this.props.status})); //Если статус не успел придти, то value инициализируется пустой строкой
         }
     }
 

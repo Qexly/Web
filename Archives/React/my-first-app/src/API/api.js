@@ -38,5 +38,11 @@ export const profileApiDal = {
 export const authApiDal = {
     me() {
         return instance.get(`auth/me`);
+    },
+    login(email, password, remeberMe = false) {
+        return instance.post(`/auth/login`, {email, password, remeberMe});
+    },
+    logout() {
+        return instance.delete(`/auth/login`);
     }
 }

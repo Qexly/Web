@@ -21,12 +21,14 @@ import {PRODUCTS} from './Components_basic/FilterableProductTable/FilterableProd
 import RefFocus from './Components_advanced/refFocus/RefFocus.jsx';
 import RefChild from './Components_advanced/refChild/refChild.jsx';
 import OuterClickExample from './Components_advanced/OuterClickExample/OuterClickExample.jsx';
-
+//HOOKS
+import Expample from './HOOKS/useState.jsx';
+import EffectExpample from './HOOKS/useEffect.jsx';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <FilterableProductTable products={PRODUCTS} />
+   <EffectExpample />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -4,6 +4,7 @@ import Profile from './Profile.jsx';
 import { getUserProfile, getUserStatus, updateUserStatus } from './../../Redux/profileReducer.js';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux'; 
+import { withAuthRedirect } from './../../HOCs/withAuthRedirect.jsx';
 
 class ProfileContainer extends React.Component {
 
@@ -12,7 +13,7 @@ class ProfileContainer extends React.Component {
     }
 
     componentDidMount() {
-        let userId = this.props.match.params.userId || '13534';
+        let userId = this.props.match.params.userId || this.props.authorizedId;
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId);
     }
@@ -28,13 +29,15 @@ let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
+        authorizedId: state.auth.id,
+        isAuth: state.auth.isAuth,
     };
 }
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getUserStatus,  updateUserStatus}),
+    connect(mapStateToProps, {getUserProfile, getUserStatus,  updateUserStatus}),  //Рендер идет сверху вниз - от коры к ядру
     withRouter,
-    //withAuthRedirect
+    withAuthRedirect
 )(ProfileContainer)
 /*
 let ProfileAuthRedirect = withAuthRedirect(ProfileContainer);

@@ -52,6 +52,7 @@ export const onFollowButtonInProg = (isFollowOnProg, userId) => ({type: 'TOGGLE_
 export const getUsersThunkCreator = (pageSize, currentPage) => {
     return (dispatch) => {
         dispatch(onToggleFetching(true)); 
+        dispatch(onSetPage(currentPage));
         UsersApiDal.getUsers(pageSize, currentPage)
             .then(data => {
                 dispatch(onSetUsers(data.items));

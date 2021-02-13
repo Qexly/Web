@@ -1,4 +1,5 @@
-import {authApiDal} from './../API/api.js';
+import { authApiDal } from './../API/api.js';
+import { stopSubmit } from 'redux-form';
 
 let initialState = {
     id: null,
@@ -14,32 +15,59 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                isAuth: true,
             }
         default:
             return state;
     }
 }
 
-export const onSetAuthUserData = ({id, email, login}) => { 
+export const onSetAuthUserData = ({id, email, login, isAuth}) => { 
     return {
         type: 'SET_USER_DATA',
         data: {
             id, 
             email, 
             login,
+            isAuth,
         },
     }
 }
-
+//thunk creators
 export const getAuthUserData = () => {
     return (dispatch) => {
-        authApiDal.me().then(
+        return authApiDal.me().then(
             (responce) => {
-              if (responce.data.resultCode === 0) {
-                dispatch(onSetAuthUserData(responce.data.data)); 
-              }
-            }); 
+                if (responce.data.resultCode === 0) {
+                    dispatch(onSetAuthUserData({...responce.data.data, isAuth: true}));
+                }
+            });
+    }
+}
+
+export const login = (email, password, remeberMe) => {
+    return (dispatch) => {
+        authApiDal.login(email, password, remeberMe).then(
+            (responce) => {
+                if (responce.data.resultCode === 0) {
+                    dispatch(getAuthUserData());
+                } else {
+                    let action = stopSubmit('login', {_error: responce.data.messages});
+                    dispatch(action);
+                }
+            }
+        )
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        authApiDal.logout().then(
+            (responce) => {
+                if (responce.data.resultCode === 0) {
+                    dispatch(onSetAuthUserData({id: null, email: null, login: null, isAuth: false}));
+                }
+            }
+        )
     }
 }
 

@@ -16,7 +16,7 @@ function MyPosts (props){
     function addPost(formData) {
         props.addNewPost(formData.newPostText);
     }
-
+    console.log('MyPosts render');
     return (
         <div className={s.postsContainer}>
             <h3>My posts</h3>

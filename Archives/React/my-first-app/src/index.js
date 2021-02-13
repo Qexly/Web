@@ -5,7 +5,6 @@ import App from './App';
 import appStore from './Redux/redux-store.js';
 import {Provider} from 'react-redux';
 
-
 //в провайдере пропс, в котором передаем стор, должен называться именно store!
 ReactDOM.render(
   <Provider store={appStore}>

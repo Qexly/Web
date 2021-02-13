@@ -37,23 +37,12 @@ function profileReducer(state = initialState, action) {
 
 export default profileReducer;
 
-export function addPostActionCreator(postText) {
-    return {
-        type: 'ADD-POST',
-        postText,
-    }
-}
-
+export const addPostActionCreator = (postText) => ({type: 'ADD-POST', postText});
 
 export const onSetUserProfile = (profile) => ({type:'SET_USER_PROFILE', profile});
 
-const setUserStatus = (status) => {
-    return {
-        type: 'SET-USER-STATUS',
-        status,
-    }
-}
-
+const setUserStatus = (status) => ({type: 'SET-USER-STATUS', status});
+   
 export const getUserProfile = (userId) => {
     return (dispatch) => {
         profileApiDal.getProfile(userId)

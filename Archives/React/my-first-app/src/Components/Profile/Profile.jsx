@@ -6,7 +6,12 @@ function Profile (props){
 
     return (
         <div>
-          <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateUserStatus} />
+          <ProfileInfo profile={props.profile} 
+            status={props.status} 
+            updateStatus={props.updateUserStatus}
+            isOwner={props.isOwner}
+            savePhoto={props.savePhoto} 
+          />
           <MyPostsContainer />
         </div>
     );

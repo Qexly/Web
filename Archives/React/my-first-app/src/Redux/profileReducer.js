@@ -32,6 +32,13 @@ function profileReducer(state = initialState, action) {
         }
     };
 
+    if (action.type == 'SAVE_PHOTO_SUCCES') {
+        return {
+            ...state,
+            profile: {...state.profile, photos: action.photos}
+        }
+    };
+
     return state;
 }
 
@@ -42,6 +49,8 @@ export const addPostActionCreator = (postText) => ({type: 'ADD-POST', postText})
 export const onSetUserProfile = (profile) => ({type:'SET_USER_PROFILE', profile});
 
 const setUserStatus = (status) => ({type: 'SET-USER-STATUS', status});
+
+const savePhotoSucces = (photos) => ({type: 'SAVE_PHOTO_SUCCES', photos});
    
 export const getUserProfile = (userId) => {
     return (dispatch) => {
@@ -71,6 +80,16 @@ export const updateUserStatus = (status) => {
                 }
             } 
         ) 
+    }
+}
+
+export const savePhoto = (file) => {
+    return (dispatch) => {
+        profileApiDal.savePhoto(file).then(
+            (responce) => {
+                if (responce.data.resultCode === 0) dispatch(responce.data.data.photos);
+            }
+        )
     }
 }
 

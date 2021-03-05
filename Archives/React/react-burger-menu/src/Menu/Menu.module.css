@@ -1,0 +1,56 @@
+.menu {
+    position: fixed;
+    top: 50px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    transform: translateX(-130%);
+    transition: all 1s;
+    border: 1px dashed black;
+}
+
+.menu.active {
+    transform: translate(0);
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.blur {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: absolute;
+    left: 30%;
+}
+/*.menu родитель blur и menu_content*/
+.menu_content {
+    width: 30%;
+    height: 100%;
+    background-color: rgb(5, 5, 5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu_header {
+    font-size: 1.5rem;
+    color: wheat;
+    padding: 10px;
+    border-bottom: 1px solid wheat;
+    width: 100%;
+    text-align: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+
+ul li {
+    display: flex;
+    align-items: flex-end;
+    margin: 10px 0px;
+}
+

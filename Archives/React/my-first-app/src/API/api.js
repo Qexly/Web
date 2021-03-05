@@ -4,7 +4,7 @@ const instance = Axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        'API-KEY':'338c373f-4be2-4616-948e-177be0a39724',
+        'API-KEY':'fc6c1651-940b-470c-92b1-2d2f20f31bce',
     }
 })
 
@@ -37,6 +37,10 @@ export const profileApiDal = {
         let formData = new FormData();
         formData.append('image', file);
         return instance.put(`profile/photo`, formData, {headers: {'Content-Type': 'multipart/form-data'}} );
+    },
+    saveProfile(formData) {
+        console.log(formData);
+        return instance.put(`profile`, formData);
     }
 }
 
@@ -44,10 +48,17 @@ export const authApiDal = {
     me() {
         return instance.get(`auth/me`);
     },
-    login(email, password, remeberMe = false) {
-        return instance.post(`/auth/login`, {email, password, remeberMe});
+    login(email, password, remeberMe = false, captcha = null) { //Если капча отправится, даже когда не нужна - ничего страшного 
+        return instance.post(`/auth/login`, {email, password, remeberMe, captcha});
     },
     logout() {
         return instance.delete(`/auth/login`);
     }
 }
+
+export const securityAPI = {
+   getCaptchaUrl() {
+    return instance.get(`security/get-captcha-url`);
+   } 
+}
+

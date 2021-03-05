@@ -1,4 +1,4 @@
-import { authApiDal } from './../API/api.js';
+import { authApiDal, securityAPI } from './../API/api.js';
 import { stopSubmit } from 'redux-form';
 
 let initialState = {
@@ -7,6 +7,7 @@ let initialState = {
     login: null,
     isAuth: false,
     isFetching: null,
+    captchaUrl: null, //Если null - то капча не нужна
 }
 
 const authReducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
+            }
+        case 'GET_CAPTCHA_URL_SUCCES': 
+            return {
+                ...state,
+                captchaUrl: action.url,
             }
         default:
             return state;
@@ -32,6 +38,9 @@ export const onSetAuthUserData = ({id, email, login, isAuth}) => {
         },
     }
 }
+
+const setCaptchaUrl = (url) => ({type: 'GET_CAPTCHA_URL_SUCCES', url}); 
+
 //thunk creators
 export const getAuthUserData = () => {
     return (dispatch) => {
@@ -44,13 +53,16 @@ export const getAuthUserData = () => {
     }
 }
 
-export const login = (email, password, remeberMe) => {
+export const login = (email, password, remeberMe, captcha) => {
     return (dispatch) => {
-        authApiDal.login(email, password, remeberMe).then(
+        authApiDal.login(email, password, remeberMe, captcha).then(
             (responce) => {
                 if (responce.data.resultCode === 0) {
                     dispatch(getAuthUserData());
                 } else {
+                    if (responce.data.resultCode === 10) {
+                        dispatch(getCaptchaUrl());
+                    }
                     let action = stopSubmit('login', {_error: responce.data.messages});
                     dispatch(action);
                 }
@@ -70,5 +82,15 @@ export const logout = () => {
         )
     }
 }
+
+export const getCaptchaUrl = () => {
+    return (dispatch) => {
+        securityAPI.getCaptchaUrl().then(
+            (responce) => dispatch(setCaptchaUrl(responce.data.url))
+        )
+    }   
+}
+
+
 
 export default authReducer;

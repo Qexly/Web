@@ -1,40 +1,46 @@
 import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react';
 
-const styles = {paddingTop: '10px', marginLeft: 'auto', marginRight: 'auto', width: '500px'}
-
-const useLogger = (value) => {
-  useEffect(() => {
-    console.log('value changed: ', value)
-  }, [value])
-}
-
-const useInput = (initialValue) => {
-  const [value, setValue] = useState('');
-
-  const onChange = (e) => setValue(e.target.value);
-
-  const clear = () => setValue('');
-
-  return {value, onChange, clear};
-}
 
 function App() {
 
-  const input = useInput('');
-  const input2 = useInput('');
+  let [count, setCount] = useState(0);
+  let [colored, setColored] = useState(false);
 
-  useLogger(input.value);
+  const styles = {
+    color: colored ? 'purple' : null,
+  }
+
+  const generateItems = useCallback( () => {
+    console.log('сложный запрос');
+    return new Array(count).fill(null).map((_, index) => `Элемент №${index + 1}`);
+  }, [count]);
+  
 
   return (
-    <div style={styles}>
-      <input type="text" value={input.value} onChange={input.onChange} />
-      <button onClick={input.clear}>Очистить</button>
-      <p>{input.value}</p>
-
-      <input type="text" value={input2.value} onChange={input2.onChange} />
-      <button onClick={input2.clear}>Очистить</button>
-      <p>{input2.value}</p>
+    <div>
+      <h2 style={styles}>Счетчик: {count}</h2>
+      <button onClick={(e) => setCount(prevCount => ++prevCount)}>Прибавить</button>
+      <button onClick={(e) => setColored(prevCount => !prevCount)}>Покрасить</button>
+      <ItemList getItems={generateItems} />
     </div>
+  )
+}
+
+const ItemList = (props) => {
+  let {getItems} = props;
+
+  const[items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(getItems())
+  }, [getItems]);
+
+  return (
+    <ul>
+      {
+        items.map((item, index) =><li key={index}>{item}</li> )
+      }
+    </ul>
   )
 }
 

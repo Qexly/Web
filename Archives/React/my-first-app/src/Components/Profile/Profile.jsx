@@ -10,7 +10,8 @@ function Profile (props){
             status={props.status} 
             updateStatus={props.updateUserStatus}
             isOwner={props.isOwner}
-            savePhoto={props.savePhoto} 
+            savePhoto={props.savePhoto}
+            saveProfile={props.saveProfile} 
           />
           <MyPostsContainer />
         </div>

@@ -1,0 +1,72 @@
+.border {
+    border: 1px solid black;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: minmax(100px, auto) 1fr minmax(70px, auto); /*1fr - main займет все свободное место и прибьет футер к низу, если будет мало контента*/
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+
+.header {
+    background-color: rgb(236, 129, 129);
+    grid-area: header;
+    padding: 15px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+    align-items: center;
+}
+
+.header__logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgb(160, 245, 1);
+    grid-column: 2/3;
+}
+
+.header__menu {
+    grid-column: 3/4;
+}
+
+.header__list {
+ display: grid;
+ grid-auto-flow: column;
+ justify-items: end;
+}
+
+.header__list li{
+
+}
+
+.main {
+    grid-area: main;
+    padding: 30px 15px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+}
+
+.sidebar {
+    grid-column: 2/3;
+}
+
+.content {
+    grid-column: 3/4;
+}
+
+.footer {
+    background-color: rgb(140, 142, 247);
+    grid-area: footer;
+}
+
+img {
+ width: 550px;
+ height: 300px;
+}

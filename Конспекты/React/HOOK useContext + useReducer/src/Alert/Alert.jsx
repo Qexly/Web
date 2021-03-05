@@ -3,7 +3,7 @@ import {useAlert} from './AlertContext';
 
 const Alert = (props) => {
 
-    const {state, hide} = useAlert();
+    const {state, hide} = useAlert(); // return useContext(AlertContext);
 
     return (
         state ? (

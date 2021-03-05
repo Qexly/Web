@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form';
 import { profileApiDal } from './../API/api.js';
 
 let initialState = {
@@ -87,7 +88,23 @@ export const savePhoto = (file) => {
     return (dispatch) => {
         profileApiDal.savePhoto(file).then(
             (responce) => {
-                if (responce.data.resultCode === 0) dispatch(responce.data.data.photos);
+                if (responce.data.resultCode === 0) dispatch(savePhotoSucces(responce.data.data.photos));
+            }
+        )
+    }
+}
+
+export const saveProfile = (formData) => {
+    return (dispatch, getState) => {
+        const userId = getState().auth.id;
+        return profileApiDal.saveProfile(formData).then(
+            (responce) => {
+                if (responce.data.resultCode === 0){
+                    dispatch(getUserProfile(userId));
+                } else {
+                    dispatch(stopSubmit('edit-profile', {_error: responce.data.messages[0]}));
+                    return Promise.reject();
+                }
             }
         )
     }

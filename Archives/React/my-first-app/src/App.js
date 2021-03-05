@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './Components/Navbar/Navbar.jsx';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import UsersContainer from './Components/Users/UsersContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import LoginPage from "./Components/Login/Login.jsx";
@@ -8,6 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { initialAppTC } from './Redux/appReducer.js'
 import Preloader from './Components/common/preloader/Preloader';
+
 //import DialogsContainer from  './Components/Dialogs/DIalogsContainer.jsx';
 const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DIalogsContainer.jsx'));
 //import ProfileContainer from './Components/Profile/ProfileContainer.jsx';
@@ -23,7 +24,7 @@ class App extends React.Component {
 
     if (!this.props.initialized) return <Preloader />
 
-    return (
+    return ( //Switch удовлетворит только первый попавшийся URL.
       <BrowserRouter>
         <div className='wrapper'>
 
@@ -37,15 +38,19 @@ class App extends React.Component {
             </div>
 
             <div className='app-wrapper-content'>
+              <Switch>
+                <Route path='/dialogs' render={() => <React.Suspense fallback={<div>Loading...</div>}><DialogsContainer /></React.Suspense>} />
 
-              <Route path='/dialogs' render={() => <React.Suspense fallback={<div>Loading...</div>}><DialogsContainer /></React.Suspense>} />
+                <Route path='/profile/:userId?' render={() => <React.Suspense fallback={<div>Loading...</div>}><ProfileContainer /></React.Suspense>} />
 
-              <Route path='/profile/:userId?' render={() => <React.Suspense fallback={<div>Loading...</div>}><ProfileContainer /></React.Suspense>} />
+                <Route path='/users' render={() => <UsersContainer />} />
 
-              <Route path='/users' render={() => <UsersContainer />} />
+                <Route path='/login' render={() => <LoginPage />} />
 
-              <Route path='/login' render={() => <LoginPage />} />
+                <Redirect exact from="/" to="/profile" />
 
+                <Route exact path='*' render={() => <div>404 NOT FOUND</div>} />
+              </Switch>
             </div>
           </main>
 

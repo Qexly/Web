@@ -34,8 +34,7 @@ class UsersAPI extends React.Component { //делает запросы
                     onPageChangeHandler={this.onPageChangeHandler} 
                     followTogglerThunkCreator={this.props.followTogglerThunkCreator}
                 />
-           </Fragment>
-            
+           </Fragment>   
        )
        
     }

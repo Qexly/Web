@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.border {
+    bborder: 1px dotted rgb(90, 87, 87)
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+li {
+    list-style: none;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: rgb(246, 246, 246);
+    padding-top: 23px;
+    padding-bottom: 23px;
+}
+
+.header-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-container a {
+    color: black;
+    font-size: 16px;
+    padding: 27px 6px;
+    margin-right: 63px;
+}
+
+.header-container a:hover {
+    background-color: #ffea00;
+}
+
+#menu-checkbox {
+    display: none;
+}
+
+ul {
+    display: flex;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 420px) {
+    .header-container {
+        width: 100%;
+        justify-content: space-around;
+    }
+    .main-menu {
+        display: none;
+    }
+    .main-menu li {
+        width: 100%;
+        display: block;
+        font-size: 12px;
+    }
+    .main-menu a {
+        display: block;
+        padding: 8px;
+    }
+    .toggle-button {
+        text-align: center;
+        display: block;
+        cursor: pointer;
+        color: black;
+    }
+    .toggle-button::after {
+        content: attr(data-open); /* Получили доступ к атрибуту data-open у <lable /> */
+        display: block;
+    }
+    #menu-checkbox:checked + nav[role="navigation"] .main-menu { /*:checked - псевдокласс когда кнопка чекнута*/
+        display: block;
+    }
+    .header-container a {
+        margin-right: -63px;
+    }
+    .main-menu {
+        position: relative;
+        top: 30px;
+        right: 11px;
+    }
+}

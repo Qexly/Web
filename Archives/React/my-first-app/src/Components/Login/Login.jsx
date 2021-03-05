@@ -14,7 +14,7 @@ class Login extends React.Component {
     }
 
     onSubmitHandler(formData) {
-        this.props.login(formData.email, formData.password, formData.rememberMe);
+        this.props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }   
 
     render() {
@@ -24,7 +24,7 @@ class Login extends React.Component {
         return (
             <div>
                 <h1>Login</h1>
-                <LoginReduxForm onSubmit={this.onSubmitHandler.bind(this)}/>
+                <LoginReduxForm onSubmit={this.onSubmitHandler.bind(this)} captchaUrl={this.props.captchaUrl}/>
             </div>
         )
     }
@@ -42,6 +42,14 @@ const LoginForm = (props) => {
             <div>
                 <label><Field type="checkbox" component="input" name="rememberMe"/> remember me </label>
             </div>
+
+            {
+                props.captchaUrl && <img src={props.captchaUrl} />
+            }
+            {
+                props.captchaUrl && <Field type="text" placeholder="captcha" name="captcha" component="input"/>
+            }
+
             <div>
                 {
                     props.error ? <span>{props.error}<br/></span> : null
@@ -58,6 +66,7 @@ const LoginReduxForm = reduxForm({
 
 const mapStateToProps = (state) => {
     return {
+        captchaUrl: state.auth.captchaUrl,
         isAuth: state.auth.isAuth,
     }
 }

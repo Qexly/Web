@@ -3,7 +3,7 @@ import React, {useContext, useReducer, useState} from 'react';
 const AlertContext = React.createContext();
 
 export const useAlert = () => {
-    return useContext(AlertContext);
+    return useContext(AlertContext); //Возвращает то, что положили в проп value
 } 
 
 const reducer = (state, action) => {

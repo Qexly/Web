@@ -40,13 +40,25 @@ const CardsPage = (props) => {
             <button className={`${s.left}`} onClick={prevClickHandler}>&laquo;</button>
             <div className={`${s.cardsContainer} `}>
                 {
-                    detailsList.map((pokemon) => <Card 
-                        imgsrc={pokemon.sprites.other.dream_world.front_default} 
-                        number={pokemon.id} 
-                        name={pokemon.name} 
-                        weight={pokemon.weight} 
-                        key={pokemon.id}
-                    /> )
+                    detailsList.map((pokemon) => {
+                        return (
+                            !pokemon.sprites ? 
+                            <Card
+                                imgsrc={'https://sales-generator.ru/upload/medialibrary/74b/74bdb1e99fcff72e5d7f696100632b04.jpg.pagespeed.ce.ckHXwdDbNh.jpg'}
+                                number={'server error'}
+                                name={'server error'}
+                                weight={'server error'}
+                                key={'server error'}
+                            /> :
+                            <Card
+                                imgsrc={pokemon.sprites.other.dream_world.front_default}
+                                number={pokemon.id}
+                                name={pokemon.name}
+                                weight={pokemon.weight}
+                                key={pokemon.id}
+                            />
+                        )
+                    })
                 }
             </div>
             <button className={`${s.right}`} onClick={nextClickHandler}>&raquo;</button>

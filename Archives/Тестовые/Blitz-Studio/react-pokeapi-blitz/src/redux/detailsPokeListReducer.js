@@ -61,7 +61,8 @@ export const setListTC = (list) => {
         list.forEach(item => {
             const url = item.url.slice(26);
             promises.push(pokelistQueries.getDetailsPokelist(url).then(
-                (response) => response.data
+                (response) => response.data,
+                (error) => error
             ));
         });
         Promise.all(promises).then(

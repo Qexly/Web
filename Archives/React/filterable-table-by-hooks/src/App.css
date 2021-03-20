@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+
+table * {
+  font-weight: normal;
+}
+
+.table-head th {
+  font-weight: bold;
+}

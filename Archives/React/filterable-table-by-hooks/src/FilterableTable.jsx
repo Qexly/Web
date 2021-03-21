@@ -28,6 +28,7 @@ const SearchBar = (props) => {
 
     const formOnChange = (e) => {
         onChange(e);
+        debugger;
     }
 
     return (

@@ -39,3 +39,36 @@ export const AlertProvider = (props) => {
 }
 
 export default AlertProvider;
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+const somethingContext = useContext();
+
+export const getContext = () => {
+    return useContext(AlertContext); //Возвращает то, что положили в проп value
+} 
+
+const somethingReducer = (state, action) => {
+    if (action.type === 'type') {
+        return {
+            ...state,
+            type = action.type,
+        }
+    } else {
+        return state
+    }
+}
+
+const SomethingProvider = (props) => {
+    let children = {props};
+
+    const [state, dispatch] = useReducer(somethingReducer, {type: null});
+
+    const doDispatch = () => dispatch({type:'action'})
+
+    return (
+        <somethingContext.Provider value={state, doDispatch}>
+            {children}
+        </somethingContext.Provider>
+    )
+}

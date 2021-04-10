@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-html{
+html {
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -18,32 +18,29 @@ body {
     justify-content: center;
 }
 
-table#game_field {
+.gameField {
     width: 500px;
     height: 500px;
-    border-collapse: collapse;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-table#game_field td {
+.gameField__cell {
     width: 33.333%;
     height: 33.333%;
     text-align: center;
-    border: 3px solid white; 
+    border: 4px solid white; 
     font-weight: bol;
     font-size: 8rem;
     color: rgb(173, 177, 180);
-}
-
-table#game_field td:hover {
-    background-color: rgba(219, 11, 238, 0.185); 
-}
-
-table#game_field tr:nth-child(odd) {
     background-color: rgba(0, 255, 255, 0.26);
+    transition: border 0.1s 
 }
 
-table#game_field tr:nth-child(even) {
-    background-color: rgba(238, 234, 11, 0.26);
+
+.gameField__cell:hover {
+    background-color: rgba(219, 11, 238, 0.185); 
+    border: 1px solid white; 
 }
 
 .tabloid {
@@ -55,7 +52,7 @@ table#game_field tr:nth-child(even) {
     align-items: center;
 }
 
-.tabloid div {
+.tabloid__score {
     font-size: 1.3rem;
     width: 50%;
     text-align: center;
@@ -63,6 +60,3 @@ table#game_field tr:nth-child(even) {
     color: aliceblue;
 }
 
-.tabloid span {
-    width: 50%;
-}

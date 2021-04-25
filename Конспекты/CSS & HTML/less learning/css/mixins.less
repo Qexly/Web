@@ -1,0 +1,14 @@
+//main: style.css
+
+.btn(@bg) {
+
+    & when(lightness(@bg) > 40) { //& == .btn
+        color: @black;
+    }
+
+    background-color: @bg;
+    &:hover,  &:focus  {
+        background-color: darken(@bg, 15%);
+        outline: none;
+    }
+}

@@ -1,0 +1,51 @@
+//main: ../style.less
+
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0.5em 1em;
+    font-family: inherit;
+    font-size: 1rem;
+    color: white;
+    background-color: #ccc;
+    border-radius: @radius;
+    text-decoration: none;
+    transition: background .1s linear;
+    
+    .inside & {
+        background-color: coral;
+    }
+
+    &.and {
+        color: blueviolet;
+    }
+
+    & + & {
+        margin-left: 1rem;
+    }
+
+    span {
+        color: @black;
+    }
+
+    > p {
+        color: @black;
+    }
+/*
+    &:hover,  &:focus  {
+        background-color: rgb(168, 164, 164);
+        outline: none;
+    }
+*/
+    &--primary {
+        .btn(@primary);
+    }
+
+    &--secondary {
+        .btn(@secondary);
+    }
+
+    &--green {
+        .btn(green);
+    }
+}

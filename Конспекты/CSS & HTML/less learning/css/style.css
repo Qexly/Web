@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  color: #000000;
+}
+.title {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #1a29f3;
+  font-weight: 700;
+}
+@media (max-width: 575px) {
+  .title {
+    font-size: 1rem;
+  }
+}
+.btn {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0.5em 1em;
+  font-family: inherit;
+  font-size: 1rem;
+  color: white;
+  background-color: #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.1s linear;
+  /*
+    &:hover,  &:focus  {
+        background-color: rgb(168, 164, 164);
+        outline: none;
+    }
+*/
+}
+.inside .btn {
+  background-color: coral;
+}
+.btn.and {
+  color: blueviolet;
+}
+.btn + .btn {
+  margin-left: 1rem;
+}
+.btn span {
+  color: #000000;
+}
+.btn > p {
+  color: #000000;
+}
+.btn--primary {
+  color: #000000;
+  background-color: #1a29f3;
+}
+.btn--primary:hover,
+.btn--primary:focus {
+  background-color: #0a16b7;
+  outline: none;
+}
+.btn--secondary {
+  color: #000000;
+  background-color: #eeea0a;
+}
+.btn--secondary:hover,
+.btn--secondary:focus {
+  background-color: #a5a207;
+  outline: none;
+}
+.btn--green {
+  background-color: green;
+}
+.btn--green:hover,
+.btn--green:focus {
+  background-color: #003400;
+  outline: none;
+}
+.post {
+  width: 400px;
+  height: 200px;
+  background: url("https://cdn0.iconfinder.com/data/icons/graphics-docs/80/img-image-file-doc-512.png") 0 0 / contain no-repeat;
+}

@@ -1,2 +1,2 @@
-https://wi.sbis.ru/doc/platform/developmentapl/interface-development/ui-library/focus/ - про фокусы, есть про передачу шаблона
 https://wi.sbis.ru/doc/platform/developmentapl/interface-development/ui-library/template-detail/#scope-partial - о шаблонах подробнее!
+https://wi.sbis.ru/doc/platform/developmentapl/interface-development/controls/openers/ - попап и опенеры

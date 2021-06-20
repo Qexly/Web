@@ -15,7 +15,6 @@ function rerendedEntiteTree(store) {
       </React.StrictMode>,
       document.getElementById('root')
     );
-
 }
 
 rerendedEntiteTree(appStore);

@@ -4,3 +4,4 @@ pagex, store, etc. — https://wi.sbis.ru/doc/platform/developmentapl/interface-
 preLoaders — https://wi.sbis.ru/doc/platform/developmentapl/interface-development/application-configuration/create-application/url/ 
 browser
 Async
+Добавлял выгрузку - https://online.sbis.ru/opendoc.html?guid=b3b015b9-e98f-4e4f-b7d4-e5fea9f91fcc

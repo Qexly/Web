@@ -1,1 +1,0 @@
-document.body.scrollHeight - document.body.scrollTop - document.body.clientHeight

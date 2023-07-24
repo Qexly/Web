@@ -1,5 +1,7 @@
-import {ReactElement, MouseEvent} from 'react';
+import {ReactElement} from 'react';
 import styles from './Header/styles.module.css';
+import {Link} from 'react-router-dom';
+import {useEnv} from 'Components/EnviromentProvider';
 import Button from 'UI/Button';
 
 type NavItem = {
@@ -7,39 +9,68 @@ type NavItem = {
     href: string;
 };
 
-const Items: NavItem[] = [
+const navItems: NavItem[] = [
     {
-        title: 'Мужское',
-        href: '#'
+        title: 'ОБУВЬ',
+        href: '/shoes'
     },
     {
-        title: 'Женское',
-        href: '#'
+        title: 'ОДЕЖДА',
+        href: '/clothing'
     },
     {
-        title: 'Обувь',
-        href: '#'
+        title: 'BRANDS',
+        href: '/'
     }
 ];
 
+const infoItems: NavItem[] = [
+    {
+        title: 'КОРЗИНА',
+        href: '/shoes'
+    }
+]
+
+/*
 const clickHandler = async (e: MouseEvent): Promise<void> => {
     const {fetchPosts} = await import('api/queries');
     const response = (await fetchPosts()).data;
 };
+*/
 
 const Header = (): ReactElement => {
+    const ENV = useEnv();
+
     return (
-        <>
+        <div className={styles.header}>
+            <div className={styles.menu}>
             {
-                Items.map(item => <a
-                    className={styles.headerItem}
-                    href={item.href}
+                navItems.map(item => <Link
+                    className={`${styles.menuItem} Link`}
+                    to={item.href}
                     key={item.title}>
                     {item.title}
-                </a>)
+                </Link>)
             }
-            <Button caption="Запрос" onClick={clickHandler} />
-        </>
+            </div>
+
+            <div className={styles.logo}>
+                <Link to="/" className="Link">
+                    <span>BRANDNAME</span>
+                </Link>
+            </div>
+
+            <div className={`${styles.info}`}>
+                {
+                    infoItems.map(item => <Link
+                        className={`${styles.menuItem} ${styles.cartItem} Link`}
+                        to={item.href}
+                        key={item.title}>
+                        {item.title}
+                    </Link>)
+                }
+            </div>
+        </div>
     )
 };
 

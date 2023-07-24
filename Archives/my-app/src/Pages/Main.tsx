@@ -5,8 +5,8 @@ import Header from 'Components/Header';
 const Main = (): ReactElement => {
     return (
         <>
-            <div>Главная</div>
             <Header />
+            <div>Главная</div>
         </>
     )
 };

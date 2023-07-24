@@ -1,4 +1,50 @@
-.headerItem {
-    text-decoration: none;
-    color: inherit;
+.header {
+    display: flex;
+    height: 85px;
+
+    box-shadow: -2px -2px 17px 3px rgba(34, 60, 80, 0.2);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    width: 33.33%;
+    padding-left: 30px;
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 33.33%;
+    font-size: var(--font-size_4xl);
+    justify-content: center;
+    font-weight: var(--bold-text);
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 33.33%;
+    padding-right: 30px;
+}
+
+.menuItem {
+    font-size: var(--font-size_m);
+}
+
+.cartItem {
+    font-size: var(--font-size_xs);
+}
+
+@media (max-width: 850px) { 
+    .menu, .info {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .menu {
+        justify-content: space-between;
+    }
 }

@@ -1,8 +1,38 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* Размеры шрифта */
+  --font-size_4xs: 11px;
+  --font-size_3xs: 12px;
+  --font-size_2xs: 13px;
+  --font-size_xs: 14px;
+  --font-size_s: 15px;
+  --font-size_m: 16px;
+  --font-size_l: 17px;
+  --font-size_xl: 18px;
+  --font-size_2xl: 19px;
+  --font-size_3xl: 20px;
+  --font-size_4xl: 21px;
+
+  /* Жирный шрифт */
+  --bold-text: 700;
+
+  /* Включение адаптивного дизайна */
+  --adaptive-width: 700px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.Link {
+  text-decoration: none;
+  color: inherit;
 }

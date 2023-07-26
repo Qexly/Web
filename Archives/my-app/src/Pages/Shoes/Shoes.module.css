@@ -1,7 +1,26 @@
 .container {
     display: flex;
+    width: 100%;
 }
 
 .filters {
-    width: 300px;
+    width: 15%;
+    min-width: 150px;
+}
+
+.shoes {
+    display: flex;
+    width: 85%;
+    justify-content: center;
+}
+
+.shoesWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    justify-content: center;
+}
+
+.productCard {
+    margin: 12px 12px 0 0;
 }

@@ -1,7 +1,8 @@
 import {ReactElement} from 'react';
 import styles from './Header/styles.module.css';
 import {Link} from 'react-router-dom';
-import {useEnv} from 'Components/EnviromentProvider';
+import Burger from 'assets/imgs/burger.svg';
+import classNames from 'classnames';
 import Button from 'UI/Button';
 
 type NavItem = {
@@ -38,22 +39,36 @@ const clickHandler = async (e: MouseEvent): Promise<void> => {
 };
 */
 
-const Header = (): ReactElement => {
-    const ENV = useEnv();
+interface IProps {
+    adaptiveMode?: boolean;
+}
 
+const DesktopMenu = (): ReactElement => (
+    <div className={styles.desktopMenu}>
+        {
+            navItems.map(item => <Link
+                className={`${styles.menuItem} Link`}
+                to={item.href}
+                key={item.title}>
+                {item.title}
+            </Link>)
+        }
+    </div>
+);
+
+const AdaptiveMenu = (): ReactElement => (
+    <div className={styles.adaptiveMenu}>
+        <img className={`${styles.burger}`} src={Burger} />
+    </div>
+);
+
+const Header = ({adaptiveMode}: IProps): ReactElement => {
     return (
-        <div className={styles.header}>
-            <div className={styles.menu}>
+        <div className={classNames(styles.header, {[styles.headerAdaptive]: adaptiveMode})}>
             {
-                navItems.map(item => <Link
-                    className={`${styles.menuItem} Link`}
-                    to={item.href}
-                    key={item.title}>
-                    {item.title}
-                </Link>)
+                adaptiveMode ? <AdaptiveMenu /> :  <DesktopMenu />
             }
-            </div>
-
+        
             <div className={styles.logo}>
                 <Link to="/" className="Link">
                     <span>BRANDNAME</span>

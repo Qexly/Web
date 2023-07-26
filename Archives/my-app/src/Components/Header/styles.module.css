@@ -1,16 +1,29 @@
 .header {
     display: flex;
     height: 85px;
-
     box-shadow: -2px -2px 17px 3px rgba(34, 60, 80, 0.2);
 }
 
-.menu {
+.headerAdaptive {
+    height: 65px;
+}
+
+.desktopMenu {
     display: flex;
     align-items: center;
     width: 33.33%;
     padding-left: 30px;
     justify-content: space-around;
+}
+
+.adaptiveMenu {
+    display: flex;
+    width: 33.33%;
+}
+
+.burger {
+    width: 25px;
+    margin-left: 15px
 }
 
 .logo {
@@ -38,13 +51,15 @@
     font-size: var(--font-size_xs);
 }
 
+/* Для узких компов */
 @media (max-width: 850px) { 
-    .menu, .info {
+    .desktopMenu, .info {
         padding-left: 12px;
         padding-right: 12px;
     }
 
-    .menu {
+    .desktopMenu {
         justify-content: space-between;
     }
 }
+

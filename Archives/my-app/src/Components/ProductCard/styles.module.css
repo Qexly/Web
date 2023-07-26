@@ -1,4 +1,61 @@
 .container {
     display: flex;
-    width: 300px;
+    flex-direction: column;
+    width: 250px;
+
+}
+
+.slider {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.sliderIndicator {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 3px;
+}
+
+.indicatorItem {
+    height: 3px;
+    flex-grow: 1;
+    background-color: #f3ebeb;
+    transition: background-color 150ms linear;
+}
+
+.indicatorItem:not(:first-child) {
+    margin-left: 3px;
+}
+
+.indicatorItemActive {
+    background-color: #b7b1b1;
+}
+
+.photo {
+    width: 100%;
+    height: 315px;
+}
+
+.mouseGif {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 70px;
+}
+
+.name {
+    align-self: center;
+    max-width: 100%;
+    margin-top: 10px;
+    font-size: var(--font-size_xs);
+    font-weight: var(--bold-text);
+}
+
+.price {
+    margin-top: 10px;
+    align-self: center;
 }

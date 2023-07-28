@@ -9,10 +9,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <EnvProvider>
-    <App />
-  </EnvProvider>
-  </React.StrictMode>
-
+    <React.StrictMode>
+        <EnvProvider>
+            <App/>
+        </EnvProvider>
+    </React.StrictMode>
 );

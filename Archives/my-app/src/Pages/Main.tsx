@@ -1,13 +1,11 @@
-import React from 'react'; // удалить
 import {ReactElement} from 'react';
-import Header from 'Components/Header';
+import PageLayout from 'Modules/PageLayout';
 
 const Main = (): ReactElement => {
     return (
-        <>
-            <Header />
+        <PageLayout>
             <div>Главная</div>
-        </>
+        </PageLayout>
     )
 };
 

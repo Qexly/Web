@@ -13,13 +13,10 @@ interface IProps {
     className?: string;
 }
 
-
-
-const ProductCard = ({ name, photos, price, mainImage, showHint, className }: IProps): ReactElement => {
+const ProductCard = ({name, photos, price, mainImage, showHint, className}: IProps): ReactElement => {
     const cardPhotos = useMemo(() => photos.reverse(), [photos]);
     const [currentImgindex, setImg] = useState(0);
     const [gifTimesOut, setGifOut] = useState(false);
-    
 
     if (showHint) {
         setTimeout(() => setGifOut(true), 2550);
@@ -35,30 +32,39 @@ const ProductCard = ({ name, photos, price, mainImage, showHint, className }: IP
 
     }, [photos]);
 
+    const getSliderClass = useCallback((index: number): string => classNames(styles.indicatorItem, {
+        [styles.indicatorItemActive]: index === currentImgindex
+    }), [currentImgindex]);
+
+    const currentSrc = useMemo(() => `https://${cardPhotos[currentImgindex]}`, [currentImgindex]);
+
     return (
-        <div className={`${styles.container} ${className}`}
-            onMouseMove={(e) => mouseMoveHandler(e)}
-            onMouseLeave={() => setImg(0)}>
+        <div className={classNames(styles.container, className)}
+             onMouseMove={(e) => mouseMoveHandler(e)}
+             onMouseLeave={() => setImg(0)}>
             <div className={styles.slider}>
                 <img className={styles.photo}
-                    src={`https://${cardPhotos[currentImgindex]}`} />
+                     src={currentSrc}/>
 
                 <div className={styles.sliderIndicator}>
                     {
-                        cardPhotos.map((_, index) => <div className={classNames(styles.indicatorItem, {
-                            [styles.indicatorItemActive]: index === currentImgindex
-                        })}></div>)
+                        cardPhotos.map((_, index) => <div key={index} className={getSliderClass(index)}></div>)
                     }
                 </div>
 
                 {
-                    showHint && !gifTimesOut && <img className={styles.mouseGif} src={mouseGif} />
+                    showHint && !gifTimesOut &&
+                    <img className={styles.mouseGif} src={mouseGif}/>
                 }
             </div>
 
-            <span className={`truncate ${styles.name}`}>{name.toUpperCase()}</span>
+            <span className={classNames('truncate', styles.name)}>
+                {name.toUpperCase()}
+            </span>
 
-            <span className={styles.price}>{price}</span>
+            <span className={styles.price}>
+                {price}
+            </span>
         </div>
     )
 };

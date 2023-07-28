@@ -1,12 +1,11 @@
 import {ReactElement} from 'react';
-import Header from 'Components/Header';
+import PageLayout from 'Modules/PageLayout';
 
 const Clothing = (): ReactElement => {
     return (
-        <>
-         <Header />
-         <div>Одежда</div>
-        </>
+        <PageLayout>
+            <div>Одежда</div>
+        </PageLayout>
     )
 };
 

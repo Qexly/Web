@@ -1,39 +1,35 @@
 import {ReactElement} from 'react';
-import Header from 'Components/Header';
 import styles from 'Pages/Shoes/Shoes.module.css'
-
+import PageLayout from 'Modules/PageLayout';
 import ProductCard from 'Components/ProductCard';
-import {useEnv} from 'Components/EnviromentProvider';
 
 import {mockedShoes} from 'api/mocks';
 
 const shoes: any[] = mockedShoes.products;
 
 const Shoes = (): ReactElement => {
-    const {adaptiveMode} = useEnv();
-
     return (
-        <>
-            <Header adaptiveMode={adaptiveMode} />
+        <PageLayout>
             <div className={styles.container}>
                 <div className={styles.filters}>
-                    Панель фильтров сверху для адаптива
+                    Панель фильтров
                 </div>
                 <div className={styles.shoes}>
                     <div className={styles.shoesWrapper}>
-                    {
-                        shoes.map((item, index) => <ProductCard
-                            className={styles.productCard}
-                            mainImage={item.imageUrl}
-                            name={item.name}
-                            photos={item.additionalImageUrls}
-                            price={item.price.current.text}
-                            showHint={index === 0} />)
-                    }
+                        {
+                            shoes.map((item, index) => <ProductCard
+                                key={index}
+                                className={styles.productCard}
+                                mainImage={item.imageUrl}
+                                name={item.name}
+                                photos={item.additionalImageUrls}
+                                price={item.price.current.text}
+                                showHint={index === 0}/>)
+                        }
                     </div>
                 </div>
             </div>
-        </>
+        </PageLayout>
     )
 };
 

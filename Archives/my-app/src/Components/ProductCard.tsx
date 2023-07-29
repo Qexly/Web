@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import styles from 'Components/ProductCard/styles.module.css'
 
 import mouseGif from 'assets/imgs/hand-swipe.gif';
+import tapPng from 'assets/imgs/tap.png'; 
 
 interface IProps {
     name: string;

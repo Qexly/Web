@@ -28,6 +28,7 @@ const Shoes = (): ReactElement => {
                                 name={item.name}
                                 photos={item.additionalImageUrls}
                                 price={item.price.current.text}
+                                isTouch={isTouch}
                                 showHint={index === 0}/>)
                         }
                     </div>

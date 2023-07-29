@@ -2,17 +2,19 @@ import {createContext, ReactElement, useContext, useState, useEffect, UIEvent, u
 
 const ADAPTIVE_WIDTH: number = 700;
 
-const getAdaptiveMode = (): boolean => window.innerWidth <= ADAPTIVE_WIDTH;
-/*
-const isMobile () => {
+const getIsMobile = (): boolean => {
     const details = navigator.userAgent;
     const regexp = /mobile/i;
-
+    return regexp.test(details);
 }
- */
+
+const getAdaptiveMode = (): boolean => window.innerWidth <= ADAPTIVE_WIDTH || getIsMobile();
+
+const getIsTouch = (): boolean => ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 const ENV = {
-    adaptiveMode: getAdaptiveMode()
+    adaptiveMode: getAdaptiveMode(),
+    isTouch: getIsTouch()
 }
 
 const EnvContext = createContext(ENV);
@@ -27,7 +29,10 @@ const EnvProvider = ({children}: IProps): ReactElement => {
     const [envState, setEnv] = useState(ENV);
 
     const resizeHandler = useCallback((e: UIEvent): void => {
-        setEnv({adaptiveMode: getAdaptiveMode()});
+        setEnv({
+            adaptiveMode: getAdaptiveMode(),
+            isTouch: getIsTouch()
+        });
     }, [setEnv, envState]);
 
     useEffect(() => {

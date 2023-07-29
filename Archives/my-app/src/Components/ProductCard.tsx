@@ -11,6 +11,7 @@ interface IProps {
     mainImage?: string;
     showHint?: boolean;
     className?: string;
+    isTouch?: boolean;
 }
 
 const ProductCard = ({name, photos, price, mainImage, showHint, className}: IProps): ReactElement => {

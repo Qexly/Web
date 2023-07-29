@@ -56,6 +56,22 @@
 }
 
 /* Для адаптации */
+.containerAdaptive {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.shoesAdaptive {
+    width: 100%;
+}
+
+.filtersAdaptive {
+    width: 100%;
+    max-width: 100%;
+    min-width: 150px;
+    justify-content: center;   
+}
+
 @media (max-width: 700px) {
     .container {
        flex-direction: column;

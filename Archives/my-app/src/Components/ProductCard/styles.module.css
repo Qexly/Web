@@ -11,6 +11,19 @@
     flex-direction: column;
     position: relative;
     cursor: pointer;
+    overflow: hidden;
+    min-height: 315px;
+}
+
+.imgContainer {
+    display: flex;
+    position: relative;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+.imgContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .sliderIndicator {
@@ -37,7 +50,6 @@
 
 .photo {
     width: 100%;
-    height: 315px;
 }
 
 .mouseGif {

@@ -1,3 +1,7 @@
+html{
+  height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -6,7 +10,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
 
   /* Размеры шрифта */
   --font-size_4xs: 11px;
@@ -29,6 +33,12 @@ body {
 
   /* Цвет подложки */
   --layout-color: rgba(0, 0, 0, 0.30);
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 * {

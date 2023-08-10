@@ -1,0 +1,31 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerLayout {
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, .3);
+    display: flex;
+    flex-direction: column;
+}
+
+.title, .subTitle {
+    align-self: center;
+    color: white;
+    text-align: center;
+}
+
+.title {
+    margin-top: 15%;
+}
+
+.subTitle {
+    margin-top: 5%;
+    font-size: var(--font-size_2xl);
+    width: 80%;
+    font-weight: bold;
+    max-width: 925px;
+}

@@ -7,7 +7,7 @@ import ProductCard from 'Components/ProductCard';
 import {mockedShoes} from 'api/mocks';
 import classNames from 'classnames';
 
-const shoes: any[] = mockedShoes.products;
+const shoes: any[] = mockedShoes.products.slice(0, 9);
 
 const Shoes = (): ReactElement => {
     const {adaptiveMode, isTouch} = useEnv();

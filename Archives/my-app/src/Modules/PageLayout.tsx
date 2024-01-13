@@ -18,6 +18,7 @@ const PageLayout = ({children}: IProps): ReactElement => {
                     children
                 }
             </div>
+            <div style={{height: '50px', backgroundColor: 'wheat'}}>Футер</div>
         </div>
     )
 };

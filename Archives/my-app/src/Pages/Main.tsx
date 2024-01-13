@@ -8,13 +8,11 @@ const Main = (): ReactElement => {
         <PageLayout>
             <div className={styles.container}
             style={{backgroundImage: `url(${mainImg})`}}>
-                <div className={styles.containerLayout}>
-                    <h1 className={styles.title}>“HANDMADE IN PORTUGAL WITH LOVE AND CARE”</h1>
-                    <p className={styles.subTitle}>
-                        At NoBrand we use high quality raw materials in order to provide greater comfort.
-                        All products are 100% created, developed and produced in Portugal.
-                    </p>
-                </div>
+                <h1 className={styles.title}>“HANDMADE IN PORTUGAL WITH LOVE AND CARE”</h1>
+                <p className={styles.subTitle}>
+                    At NoBrand we use high quality raw materials in order to provide greater comfort.
+                    All products are 100% created, developed and produced in Portugal.
+                </p>
             </div>
         </PageLayout>
     )

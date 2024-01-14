@@ -1,5 +1,7 @@
 html{
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -10,7 +12,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex-grow: 1;
 
   /* Размеры шрифта */
   --font-size_4xs: 11px;
@@ -28,7 +30,7 @@ body {
   /* Жирный шрифт */
   --bold-text: 700;
 
-  /* Включение адаптивного дизайна */
+  /* Включение адаптивного дизайна (в медиа не работают переменные) */
   --adaptive-width: 700px;
 
   /* Цвет подложки */

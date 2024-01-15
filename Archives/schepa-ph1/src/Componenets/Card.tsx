@@ -1,0 +1,13 @@
+import {ReactElement} from 'react';
+import Styles from './Card/styles.module.css';
+import {ICard} from 'CONSTANTS';
+
+const Card = ({card}: {card: ICard}): ReactElement => {
+    return (
+        <div className={Styles.Container}>
+            <img className={Styles.Img} src={card.img} />
+        </div>
+    );
+};
+
+export default Card;

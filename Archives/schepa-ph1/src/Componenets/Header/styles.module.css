@@ -1,0 +1,28 @@
+.Container {
+    display: flex;
+    height: var(--header-height);
+    box-shadow: -2px -2px 17px 3px rgba(34, 60, 80, 0.2);
+    background-color: var(--brand-color);
+    justify-content: space-between;
+}
+
+.headerSection {
+    height: 100%;
+    outline: 0px solid white;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoImg {
+    height: 75px;
+}
+
+.logoTitle {
+    font-size: var(--font-size_2xl);
+    font-weight: var(--font-weight_xl);
+    margin-left: 12px;
+}

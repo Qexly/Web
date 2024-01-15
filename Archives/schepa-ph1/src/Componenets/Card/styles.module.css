@@ -1,0 +1,20 @@
+.Container {
+    width: 320px;
+    height: 500px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.21);
+    background-color: var(--transculent-bg);
+    margin-bottom: 36px;
+    transition: box-shadow 0.2s linear;
+}
+
+.Container:hover {
+    box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.27);
+}
+
+.Img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}

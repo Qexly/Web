@@ -9,10 +9,7 @@
     background-color: var(--transculent-bg);
     margin-bottom: 36px;
     transition: box-shadow 0.2s linear;
-}
-
-.Container:not(:last-child) {
-    margin-right: 18px;
+    margin-right: var(--cards-margin);
 }
 
 .Container:hover {

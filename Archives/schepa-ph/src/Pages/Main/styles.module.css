@@ -55,6 +55,8 @@
 
 .CardsSectionTitle {
     margin-top: 46px;
+    margin-left: 18px;
+    margin-right: 18px;
     font-size: 40px;
     text-align: center;
 }
@@ -62,8 +64,24 @@
 .Cards {
     display: flex;
     flex-wrap: wrap;
-
     margin-top: 46px;
+    --cards-margin: 18px;
+    margin-left: var(--cards-margin);
+    max-width: 1014px;
+}
+
+/*для ширины viewport менее 1014px (тут не влезают три карточки)*/
+@media (max-width: 1042px) { 
+    .Cards {
+        max-width: 677px;
+    }  
+}
+
+/*для ширины viewport менее 703px (тут не влезает одна карточка)*/
+@media (max-width: 703px) { 
+    .Cards {
+        max-width: 340px;
+    }  
 }
 
 /*для ширины viewport менее 926px (тут в один столбец складываются преиущества)*/
@@ -98,6 +116,11 @@
 
 /*включение адаптива для .SchepaSubTitle*/
 :global(.is-adaptive) .SchepaSubTitle {
+    font-size: var(--font-size_xl);
+}
+
+/*включение адаптива для .CardsSectionTitle*/
+:global(.is-adaptive) .CardsSectionTitle {
     font-size: var(--font-size_xl);
 }
 

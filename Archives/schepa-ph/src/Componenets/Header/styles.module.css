@@ -4,16 +4,19 @@
     box-shadow: -2px -2px 17px 3px rgba(34, 60, 80, 0.2);
     background-color: var(--brand-color);
     justify-content: space-between;
+    padding: 0 12px;
 }
 
 .headerSection {
+    display: flex;
     height: 100%;
     outline: 0px solid white;
+    width: 33.33%;
 }
 
 .logo {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -25,4 +28,22 @@
     font-size: var(--font-size_2xl);
     font-weight: var(--font-weight_xl);
     margin-left: 12px;
+}
+
+.ContactsSection {
+    align-items: center;
+    justify-content: end;
+    font-size: var(--font-size_xl);
+    font-weight: var(--font-weight_xl);
+}
+
+.phoneImgContainer {
+    box-sizing: border-box;
+    display: flex;
+    width: 50px;
+    aspect-ratio: 1/1;
+    background-color: var(--transculent-bg);
+    border-radius: 50px;
+    padding: 5px;
+    margin-right: 8px;
 }

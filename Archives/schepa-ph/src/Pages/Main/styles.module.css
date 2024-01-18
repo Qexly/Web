@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
-    padding-left: var(--adv-item-margin);
+    margin-left: var(--adv-item-margin);
 }
 
 .CardsSection {
@@ -50,7 +50,6 @@
     flex-direction: column;
     background-color: var(--brand-color);
     align-items: center;
-
 }
 
 .CardsSectionTitle {
@@ -59,6 +58,7 @@
     margin-right: 18px;
     font-size: 40px;
     text-align: center;
+    max-width: 800px;
 }
 
 .Cards {
@@ -68,6 +68,24 @@
     --cards-margin: 18px;
     margin-left: var(--cards-margin);
     max-width: 1014px;
+}
+
+.AboutSection {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark-brand-color);
+    align-items: center;
+}
+
+.AboutSectionTitle {
+    margin-top: 46px;
+    font-size: 40px;
+}
+
+.AboutSectionTextContainer {
+    max-width: 900px;
+    margin-left: 18px;
+    margin-right: 18px;
 }
 
 /*для ширины viewport менее 1014px (тут не влезают три карточки)*/
@@ -106,7 +124,7 @@
 
 /*включение адаптива для .Advantages*/
 :global(.is-adaptive) .Advantages {
-    padding-left: 0;
+    margin-left: 0;
 }
 
 /*включение адаптива для .SchepaTitle*/

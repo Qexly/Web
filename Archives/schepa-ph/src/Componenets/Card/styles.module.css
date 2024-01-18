@@ -25,4 +25,16 @@
 .TextContent {
     display: flex;
     flex-direction: column;
+    padding: 12px;
+    font-size: var(--font-size_m);
+    font-weight: var(--font-weight_xl);
+    flex-grow: 1;
+}
+
+.Fraction {
+    margin-bottom: 8px;
+}
+
+.TextValue {
+    color: #9f0000;
 }

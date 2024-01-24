@@ -61,3 +61,7 @@ const Main = (): ReactElement => {
 };
 
 export default Main;
+
+export {
+    Main as Component
+}

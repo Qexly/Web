@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import 'index.css';
 import App from 'App';
 import EnvProvider from 'Componenets/EnviromentProvider';
-import 'Assets/fonts/lato/style.css';
+import 'Assets/fonts/Finladica/stylesheet.css';
 
 const ROOT_BLOCK = document.getElementById('root') as HTMLElement;
 

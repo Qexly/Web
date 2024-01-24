@@ -18,9 +18,14 @@ html::-webkit-scrollbar-track {
   display: none;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 body {
   margin: 0;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Finlandica', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -29,6 +34,7 @@ body {
   flex-grow: 1;
 
   --header-height: 85px;
+  --footer-height: 100px;
 
   /*цвета*/
   --brand-color: #f9ebd0;

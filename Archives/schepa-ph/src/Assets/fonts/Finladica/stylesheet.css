@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-BoldItalic.woff2') format('woff2'),
+        url('Finlandica-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-Italic.woff2') format('woff2'),
+        url('Finlandica-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-Bold.woff2') format('woff2'),
+        url('Finlandica-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-Medium.woff2') format('woff2'),
+        url('Finlandica-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-SemiBold.woff2') format('woff2'),
+        url('Finlandica-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-SemiBoldItalic.woff2') format('woff2'),
+        url('Finlandica-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-Italic.woff2') format('woff2'),
+        url('Finlandica-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-MediumItalic.woff2') format('woff2'),
+        url('Finlandica-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-Regular.woff2') format('woff2'),
+        url('Finlandica-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Finlandica';
+    src: url('Finlandica-Regular.woff2') format('woff2'),
+        url('Finlandica-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

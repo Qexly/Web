@@ -15,7 +15,7 @@ const AboutItem = ({item, imgPosition}: IProps): ReactElement => {
     }
    return (
     <div className={Styles.Container}>
-        <img style={imgStyle} className={Styles.Img} src={item.img}/>
+        <img style={imgStyle} className={Styles.Img} src={item.getImg()}/>
         <p className={Styles.Text}>{item.text}</p>
     </div>
    ) 

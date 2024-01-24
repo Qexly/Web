@@ -1,0 +1,48 @@
+.Container {
+    display: flex;
+    height: var(--footer-height);
+    box-shadow: -2px -2px 17px 3px rgba(34, 60, 80, 0.2);
+    background-color: var(--brand-color);
+    padding: 12px;
+    box-sizing: border-box;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Contacts {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size_l);
+}
+
+.Sample {
+    font-size: var(--font-size_l);
+}
+
+.logoImg {
+    height: 75px;
+}
+
+@media (max-width: 1040px) { 
+    .Container {
+        justify-content: space-between;
+    }
+
+    .Contacts, .Sample {
+        font-size: var(--font-size_s);
+    }
+}
+
+:global(.is-adaptive) {
+    .Contacts, .Sample {
+        font-size: var(--font-size_xs);
+    }
+
+    .Container {
+        justify-content: space-between;
+    }
+
+    .Sample {
+        max-width: 180px;
+    }
+}

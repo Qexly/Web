@@ -1,13 +1,22 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Main from 'Pages/Main';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    lazy: () => import("Pages/Main")
+  },
+  {
+    path: "photos",
+    lazy: () => import("Pages/Photos")
+  }
+]);
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main/>} />
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   );
 }
 

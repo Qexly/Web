@@ -1,0 +1,10 @@
+.Container {
+    display: flex;
+    background-color: var(--dark-brand-color);
+    flex-grow: 1;
+    align-items: center;
+}
+
+.Slider {
+    margin: 12px auto;
+}

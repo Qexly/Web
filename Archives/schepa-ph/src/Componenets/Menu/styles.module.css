@@ -1,0 +1,14 @@
+.Container {
+    display: flex;
+    align-items: center;
+}
+
+.Item {
+    font-weight: var(--font-weight_xl);
+    font-size: var(--font-size_l);
+    margin-right: 25px;
+}
+
+.Burger {
+    width: 30px;
+}

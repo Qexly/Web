@@ -9,7 +9,7 @@ class BinaryTreeNode {
 }
 
 /*
-  1) каждый вновь добавляемый элемент - если он меньше root, то добавляется в левую часть,
+  1) каждый вновь добавляемый элемент - если он меньше currentNode.value, то добавляется в левую часть,
    если больше - то в правую. При этом проверка проходит на каждом имеющемся уровне дерева, пока 
    элемент не найдет свое место.
 */
@@ -18,7 +18,7 @@ class BinaryTree {
         this.root = null;
     }
 
-    add(value) {
+    addSearch(value) {
         const newNode = new BinaryTreeNode(value);
 
         if (!this.root) {
@@ -46,6 +46,34 @@ class BinaryTree {
             }
         }
     }
+
+    add(value) {
+        const newNode = new BinaryTreeNode(value);
+
+        if (!this.root) {
+            this.root = newNode;
+            return;
+        }
+
+        let currentNode = this.root;
+        let queue = [];
+        
+        // когда элемент добавился - цикл прерывается
+        while (currentNode) {
+            if (!currentNode.left) {
+                currentNode.left = newNode;
+                break;
+            } else if (!currentNode.right) {
+                currentNode.right = newNode;
+                break;
+            } else {
+                // есть левый и правый узел
+                queue.push(currentNode.left, currentNode.right);
+                currentNode = queue.shift();
+            }
+        }
+    }
+
 
     _preOrder(node, callback) {
         if (!node) {
@@ -111,18 +139,28 @@ class BinaryTree {
 }
 
 const tree = new BinaryTree();  
+/*
+tree.addSearch(8);
+tree.addSearch(7);
+tree.addSearch(9);
+tree.addSearch(5);
+tree.addSearch(10);
+tree.addSearch(20);
+tree.addSearch(6);
+tree.addSearch(2);
+tree.addSearch(11);
+*/
 
-tree.add(8);
-tree.add(7);
-tree.add(9);
-tree.add(5);
-tree.add(10);
-tree.add(20);
-tree.add(6);
+tree.add(1);
 tree.add(2);
-tree.add(11);
+tree.add(3);
+tree.add(4);
+tree.add(5);
+tree.add(6);
+tree.add(7);
+tree.add(8);
 
 console.log(tree);
 
 //tree.traverseDFS('_postOrder', (node) => console.log(node.value));
-tree.traverseBFS((node) => console.log(node.value));
+//tree.traverseBFS((node) => console.log(node.value));

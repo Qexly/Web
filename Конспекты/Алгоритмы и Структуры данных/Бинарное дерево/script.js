@@ -112,9 +112,22 @@ class BinaryTree {
     }
 
     traverseDFS(method, callback) {
-        // in order - спустились до листа ветки - сделали действие 
-        // pre order - действие с node и идем в глубину
-        // post order - идем в левую ветку, потом в правую и делаем действие с node 
+        /*
+            Pre-order means that we
+            1.) Visit the root (callback).
+            2.) Traverse the left subtree (left node.)
+            3.) Traverse the right subtree (right node.)
+
+            In-order means that we
+            1.) Traverse the left subtree (left node.)
+            2.) Visit the root (callback).
+            3.) Traverse the right subtree (right node.)
+
+            Post-order means that we
+            1.) Traverse the left subtree (left node.)
+            2.) Traverse the right subtree (right node.)
+            3.) Visit the root (callback). 
+        */ 
         this[method](this.root, callback);
     }
 

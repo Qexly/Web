@@ -1,2 +1,0 @@
-\\sbis-dev.corp.tensor.ru\programmers\СБиС_3\Тестирование\SBIS_Platform_SDK_21.2000\1413 - СБИС SDK
-\\sbis-dev.corp.tensor.ru\programmers\СБиС_3\Тестирование\sabyget-service_21.2100\win32_clang - дистрибутив

@@ -1,15 +1,15 @@
-import {GAME_STATUSES} from './constants.js';
+import {GAME_STATUSES, EVENTS, MOVING_DIRECTIONS} from './constants.js';
 
 const _state = {
     gameStatus: GAME_STATUSES.SETTINGS,
-    googleJumpInterval: 1000,
+    googleJumpInterval: 4000,
     settings: {
         gridSize: {
             rows: 4,
             columns: 4
         },
-        pointsToLose: 5,
-        pointsToWin: 5,
+        pointsToLose: 10,
+        pointsToWin: 10,
     },
     positions: {
         google: {
@@ -17,7 +17,7 @@ const _state = {
             y: 1
         },
         players: [
-            {x: 2, y: 2},
+            {x: 0, y: 0},
             {x: 3, y: 3},
         ]
     },
@@ -29,10 +29,15 @@ const _state = {
 
 let _observers = [];
 
-const _notify = () => {
+const _notify = (name, payload = {}) => {
+    const event = {
+        name,
+        payload
+    };
+
     _observers.forEach(observer => {
         try {
-            observer();
+            observer(event);
         } catch (e) {
             throw new Error(e);
         }
@@ -75,6 +80,57 @@ const _getPlayerIndex = (number) => {
 
     return playerIndex;
 }
+
+const _checkValidRange = ({x, y}) => {
+    const {rows, columns} = _state.settings.gridSize;
+
+    if (x >= columns || x < 0) {
+        return false;
+    }
+
+    if (y >= rows || y < 0) {
+        return false;
+    }
+
+    return true;
+};
+
+const _checkOccupied = ({x, y}) => {
+    const [{x: x1, y: y1}, {x: x2, y: y2}] = _state.positions.players;
+
+    if (x === x1 && y === y1) {
+        return true;
+    }
+
+    if (x === x2 && y === y2) {
+        return true;
+    }
+
+    return false;
+};
+
+const _isGooglePos = ({x, y}) => {
+    const {x: xG, y: yG} = _state.positions.google;
+
+    if (x === xG && y === yG) {
+        return true;
+    };
+
+    return false;
+};
+
+const _catchGoogle = (playerNumber) => {
+    const playerIndex = _getPlayerIndex(playerNumber);
+
+    _state.points.players[playerIndex]++;
+    _notify(EVENTS.SCORES_CHANGED);
+
+    if (_state.points.players[playerIndex] === _state.settings.pointsToWin) {
+        _state.gameStatus = GAME_STATUSES.WIN;
+        _notify(EVENTS.SCORES_CHANGED);
+        clearInterval(inervalGoogleTimer);
+    }
+};
 
 export const getGooglePoints = async () => _state.points.google;
 
@@ -124,25 +180,33 @@ export const start = () => {
     _jumpGoogle();
 
     const inervalGoogleTimer = setInterval(() => {
+        const oldPosition = {..._state.positions.google};
+
         _jumpGoogle();
+
+        _notify(EVENTS.GOOGLE_JUMPED, {
+            oldPosition,
+            newPosition: {..._state.positions.google}
+        });
     
-        _state.points.google++
+        _state.points.google++;
+        _notify(EVENTS.SCORES_CHANGED);
     
         if (_state.points.google === _state.settings.pointsToLose) {
             clearInterval(inervalGoogleTimer);
             _state.gameStatus = GAME_STATUSES.LOSE;
+            _notify(EVENTS.STATUS_CHANGED);
         }
-    
-        _notify();
     }, _state.googleJumpInterval);
 
-    _notify();
+    _state.gameStatus = GAME_STATUSES.IN_PROGRESS;
+    _notify(EVENTS.STATUS_CHANGED);
 };
 
 export const playAgain = async () => {
     _state.gameStatus = GAME_STATUSES.SETTINGS;
     
-    _notify();
+    _notify(EVENTS.STATUS_CHANGED);
 };
 
 export const subscribe = (observer) => {
@@ -152,4 +216,60 @@ export const subscribe = (observer) => {
 export const unsubscribe = (observer) => {
     const deletedIndex = _observers.indexOf(observer);
     _observers.splice(deletedIndex, 1);
+};
+
+export const movePlayer = (playerNumber, direction) => {
+    if (_state.gameStatus !== GAME_STATUSES.IN_PROGRESS) {
+        console.warn('You can move player only in progress');
+        return;
+    }
+
+    const playerIndex = _getPlayerIndex(playerNumber);
+
+    const oldPosition = {..._state.positions.players[playerIndex]};
+    const newPosition = {..._state.positions.players[playerIndex]};
+    
+    switch (direction) {
+        case MOVING_DIRECTIONS.UP:
+            newPosition.y -= 1;
+            break;
+        case MOVING_DIRECTIONS.DOWN:
+            newPosition.y += 1;
+            break;
+        case MOVING_DIRECTIONS.LEFT:
+            newPosition.x -= 1;
+            break;
+        case MOVING_DIRECTIONS.RIGHT:
+            newPosition.x += 1
+            break;
+        default:
+            break;
+    }
+
+    const isValidRange = _checkValidRange(newPosition);
+
+    if (!isValidRange) {
+        console.warn('Dont valid range');
+        return;
+    }
+
+    const isOccupied = _checkOccupied(newPosition);
+
+    if (isOccupied) {
+        console.warn('Occupied position');
+        return;
+    }
+
+    const isGooglePos = _isGooglePos(newPosition);
+
+    if (isGooglePos) {
+        _catchGoogle(playerNumber);
+    }
+
+    _state.positions.players[playerIndex] = newPosition;
+
+    _notify(EVENTS[`PLAYER${playerNumber}_MOVED`], {
+        oldPosition,
+        newPosition
+    });
 };

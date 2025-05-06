@@ -1,22 +1,59 @@
-import { getGridSize, subscribe, unsubscribe } from './../../../Core/state-manager.js';
+import { getGridSize, movePlayer } from './../../../Core/state-manager.js';
+import { MOVING_DIRECTIONS } from '../../../Core/constants.js'
 import { CellComponent } from './Cell/Cell.component.js';
 
 export const GridComponent = () => {
-    console.log('Grid created');
+    const localState = {
+        cleanups: []
+    }
 
     const div = document.createElement('div');
 
-    render(div);
+    render(div, localState);
 
-    const observer = () => render(div);
+    const keyupHandler = (e) => {
+        const {code} = e
 
-    subscribe(observer);
+        switch (code) {
+            case 'ArrowUp':
+                movePlayer(1, MOVING_DIRECTIONS.UP);
+                break;
+            case 'ArrowDown':
+                movePlayer(1, MOVING_DIRECTIONS.DOWN);
+                break;
+            case 'ArrowLeft':
+                movePlayer(1, MOVING_DIRECTIONS.LEFT);
+                break;
+            case 'ArrowRight':
+                movePlayer(1, MOVING_DIRECTIONS.RIGHT);
+                break;
+            case 'KeyW':
+                movePlayer(2, MOVING_DIRECTIONS.UP);
+                break;
+            case 'KeyS':
+                movePlayer(2, MOVING_DIRECTIONS.DOWN);
+                break;
+            case 'KeyA':
+                movePlayer(2, MOVING_DIRECTIONS.LEFT);
+                break;
+            case 'KeyD':
+                movePlayer(2, MOVING_DIRECTIONS.RIGHT);
+                break;
+            default:
+                break;
+        }
+    }
 
-    return {element: div, cleanup: () => unsubscribe(observer)};
+    document.addEventListener('keyup', keyupHandler);
+
+    return {element: div, cleanup: () => {
+        localState.cleanups.forEach(func => func());
+
+        document.removeEventListener('keyup', keyupHandler);
+    }};
 };
 
-const render = async (element) => {
-    console.log('Grid rendered');
+const render = async (element, localState) => {
     element.classList.add('gridContainer')
     element.innerHTML = '';
 
@@ -35,6 +72,7 @@ const render = async (element) => {
             const td = CellComponent(x, y);
 
             tr.append(td.element);
+            localState.cleanups.push(td.cleanup)
         }
     }
 

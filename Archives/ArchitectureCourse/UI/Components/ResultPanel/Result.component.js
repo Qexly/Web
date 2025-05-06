@@ -1,4 +1,5 @@
 import {getGooglePoints, getPlayerPoints, subscribe, unsubscribe} from './../../../Core/state-manager.js';
+import {EVENTS} from '../../../Core/constants.js';
 
 export const ResultComponent = () => {
     const localState = {
@@ -11,8 +12,8 @@ export const ResultComponent = () => {
     div.classList.add('result-panel');
 
     render(div, localState);
-
-    const observer = () => render(div, localState);
+    // если не проверить на имя события, то будет гонка
+    const observer = (e) => e.name === EVENTS.SCORES_CHANGED && render(div, localState);
 
     subscribe(observer);
 
@@ -42,5 +43,5 @@ const render = async (element, localState) => {
         return;
     }
 
-    element.append(`Player 1: ${player1Points}, Player 2: ${player2Points}, Google: ${googlePoints}`);
+    element.append(`Player 1: ${localState.player1Points}, Player 2: ${localState.player2Points}, Google: ${localState.googlePoints}`);
 };

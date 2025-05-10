@@ -2,9 +2,11 @@ import {SettingsComponent} from './Settings/Settings.component.js';
 import {ResultComponent} from './ResultPanel/Result.component.js';
 import {GridComponent} from './Grid/Grid.component.js';
 import {LoseComponent} from './Lose/Lose.component.js';
+import {WinComponent} from './Win/Win.component.js';
 import {StartComponent} from './Start/Start.component.js';
 import {getGameStatus, subscribe} from './../../Core/state-manager.js';
 import {GAME_STATUSES} from './../../Core/constants.js';
+import {AudioComponent} from './Audio/Audio.component.js';
 
 
 export const AppComponent = () => {
@@ -12,6 +14,8 @@ export const AppComponent = () => {
         prevGameStatus: null,
         cleanups: []
     };
+
+    const Audio = AudioComponent();
 
     const div = document.createElement('div');
 
@@ -59,6 +63,11 @@ const render = async (element, localState) => {
         case GAME_STATUSES.LOSE: {
             const LoseRenderingResult = LoseComponent();
             element.append(LoseRenderingResult.element);
+            break;
+        }
+        case GAME_STATUSES.WIN: {
+            const WinRenderingResult = WinComponent();
+            element.append(WinRenderingResult.element);
             break;
         }
         default:

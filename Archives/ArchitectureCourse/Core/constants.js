@@ -11,6 +11,8 @@ export const EVENTS = {
     PLAYER2_MOVED: 'player2_moved',
     STATUS_CHANGED: 'status_changed',
     SCORES_CHANGED: 'scores_changed',
+    GOOGLE_CAUGHT: 'google_caught',
+    GOOGLE_RUNAWAY: 'google_runaway'
 };
 
 export const MOVING_DIRECTIONS = {

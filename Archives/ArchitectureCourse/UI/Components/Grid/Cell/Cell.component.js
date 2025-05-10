@@ -4,9 +4,13 @@ import { PlayerComponent } from '../../Common/Player/Player.component.js';
 import { EVENTS } from '../../../../Core/constants.js';
 
 export const CellComponent = (x, y) => {
+    const localState = {
+        renderVer: 0
+    };
+
     const td = document.createElement('td');
 
-    render(td, x, y);
+    render(td, x, y, localState);
 
     const observer = (e) => {
         if (e.name !== EVENTS.GOOGLE_JUMPED &&
@@ -22,7 +26,7 @@ export const CellComponent = (x, y) => {
             oldPosition.x === x && oldPosition.y === y ||
             newPosition.x === x && newPosition.y === y
         ) {
-            render(td, x, y);
+            render(td, x, y, localState);
         }
     };
 
@@ -33,10 +37,19 @@ export const CellComponent = (x, y) => {
     }};
 };
 
-const render = async (element, x, y) => {
+const render = async (element, x, y, localState) => {
+    localState.renderVer++;
+    const currentVer = localState.renderVer;
+
     element.innerHTML = '';
     const googlePos = await getGooglePosition();
     const [player1Coords, player2Coords] = await Promise.all([getPlayerPosition(1), getPlayerPosition(2)]);
+
+    if (currentVer < localState.renderVer) {
+        console.log('new version available');
+        
+        return;
+    }
 
     if (googlePos.x === x && googlePos.y === y) {
         const GoogleRenderResult = GoogleComponent();
